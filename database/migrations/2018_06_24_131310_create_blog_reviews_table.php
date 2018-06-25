@@ -13,7 +13,7 @@ class CreateBlogReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('review_blogs', function (Blueprint $table) {
+        Schema::create('blog_reviews', function (Blueprint $table) {
             $table->string('review');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
@@ -31,6 +31,6 @@ class CreateBlogReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review_blogs');
+        Schema::dropIfExists('blog_reviews');
     }
 }
