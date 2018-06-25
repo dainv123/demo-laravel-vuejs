@@ -6,8 +6,8 @@ export default {
       icon: 'icon-speedometer'
     },
     {
-      name: 'Dashboard',
-      url: '/dashboard1',
+      name: 'Dashboard 111',
+      // url: '/dashboard1',
       icon: 'icon-speedometer',
       children: [
         {

@@ -1,6 +1,5 @@
 <template>
   <div class="sidebar">
-    <h1>dai dep trai</h1>
     <SidebarHeader/>
     <SidebarForm/>
     <nav class="sidebar-nav">
