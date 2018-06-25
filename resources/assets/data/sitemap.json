@@ -1,0 +1,166 @@
+[
+    {
+        "name":"sitemap_main",
+        "value": [
+            {
+                "name": "OUR OFFERS",
+                "link": "",
+                "child" : [
+                    {
+                        "name": "New products",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Brands",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Suppliers",
+                        "link": "store/home2/en/new-products"
+                    }
+                ]
+            },
+            {
+                "name": "CATEGORIES",
+                "link": "",
+                "child" : [
+                    {
+                        "name": "Home",
+                        "link": "store/home2/en/new-products",
+                        "child": [
+                            {
+                                "name": "shop",
+                                "link": "store/home2/en/new-products"
+                            },
+                            {
+                                "name": "pages",
+                                "link": "store/home2/en/new-products"
+                            },
+                            {
+                                "name": "elements",
+                                "link": "store/home2/en/new-products"
+                            },
+                            {
+                                "name": "portfolio",
+                                "link": "store/home2/en/new-products"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "YOUR ACCOUNT",
+                "link": "",
+                "child" : [
+                    {
+                        "name": "Log in",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Create new account",
+                        "link": "store/home2/en/new-products"
+                    }
+                ]
+            },
+            {
+                "name": "PAGES",
+                "link": "",
+                "child" : [
+                    {
+                        "name": "Delivery",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Legal Notice",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Terms and conditions of use",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "About us",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Secure payment",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Our stores",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Contact us",
+                        "link": "store/home2/en/new-products"
+                    },
+                    {
+                        "name": "Sitemap",
+                        "link": "store/home2/en/new-products"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"sitemap_second",
+        "value":[
+            {
+                "name": "Prices drop",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "New products",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Best sales",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Sitemap",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Stores",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Login",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "My account",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Delivery",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Legal Notice",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "About us",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Secure payment",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Contact us",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Sitemap",
+                "link": "store/home2/en/new-products"
+            },
+            {
+                "name": "Stores",
+                "link": "store/home2/en/new-products"
+            }
+        ]
+    }
+]

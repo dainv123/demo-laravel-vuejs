@@ -1,0 +1,24 @@
+{
+    "name":"info",
+    "value": {
+        "ourstory" : {
+            "image" : "/ps-jugo/store/img/cms/cms-img.jpg",
+            "content" : "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commyolk augue. Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet.</p><p><dfn>“ Duis dictum, neque at hendrerit euismod, elit nulla mattis mi, vel auctor sem dolor nec nisl. Etiam hendrerit arcu pretium, aliquet nulla eu, placerat ipsum. Nullam suscipit nulla a sapien gravida euismod. Fusce quis ligula quis dui aliquam posuere vel sed lectus. Duis dictum, neque at hendrerit euismod, elit nulla mattis mi”</dfn></p><p>Etiam nulla nunc, aliquet vel metus nec, scelerisque tempus enim. Sed eget blandit lectus. Donec facilisis ornare turpis id pretium. Maecenas scelerisque interdum dolor in vestibulum. Proin euismod dui purus, non lacinia ligula luctus aIn volutpat cursus quam, a blandit neque accumsan vitae. Maecenas scelerisque interdum dolor in vestibulum.</p>"
+        },
+        "ourskill" : {
+            "skills" : [
+                {"name" : "prestashop", "percent":"100%"},
+                {"name" : "photoshop", "percent":"80%"},
+                {"name" : "html/css", "percent":"90%"},
+                {"name" : "other", "percent":"other%"}
+            ],
+            "content" : "<p>Aliquam ornare hendrerit augue. Cras tellus. In pulvinar lectus a est. Lorem ipsum dolor sit amet.Aliquam ornare hendrerit augue. Cras tellusCras tellus.</p><p>Proin euismod dui purus, non lacinia ligula. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Maecenas scelerisque interdum dolor in vestibulum. Proin euismod dui purus, non lacinia ligula luctus aIn volutpat cursus quam, a blandit neque accumsan vitae.</p><p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>"
+        },
+        "oursteam" : [
+            {"name":"BRYAN JHONSON", "image":"/ps-jugo/store/img/cms/team-1.jpg", "posotion" : "CEO & Co-Founder"},
+            {"name":"JORDAN MARK", "image":"/ps-jugo/store/img/cms/team-1.jpg", "posotion" : "Designer"},
+            {"name":"ROKAN TECH", "image":"/ps-jugo/store/img/cms/team-1.jpg", "posotion" : "Developer"},
+            {"name":"MARIANE SMITH", "image":"/ps-jugo/store/img/cms/team-1.jpg", "posotion" : "Customer Care"}
+        ]
+    }
+}
