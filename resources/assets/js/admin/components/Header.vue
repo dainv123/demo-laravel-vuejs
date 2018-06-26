@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <b-link class="navbar-brand" to="#">
-    <img class="logo-itviec" alt="itviec" src="https://itviec.com/assets/logo-itviec-65afac80e92140efa459545bc1c042ff4275f8f197535f147ed7614c2000ab0f.png">
+    <img class="logo" alt="rotech" src="http://demo.fieldthemes.com/ps-jugo/store/home2/img/jugo2-logo-15266985512.jpg">
     </b-link>
     <button class="navbar-toggler sidebar-toggler d-md-down-none mr-auto" type="button" @click="sidebarToggle">
       <span class="navbar-toggler-icon"></span>

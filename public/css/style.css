@@ -16187,7 +16187,6 @@ base-chart.chart {
   padding: 0.5rem 1rem;
   margin-right: 0;
   background-color: #fff;
-  background-image: url("/static/img/logo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 70px auto;
@@ -20027,8 +20026,12 @@ hr.transparent {
   border-right-color: #536c79;
 }
 
-.navbar-toggler-icon-user {
+.app-header.navbar .navbar-toggler-icon.navbar-toggler-icon-user {
   height: 23px;
-  background-image: url("https://s-xem.mkocdn.com/bundles/mkoxem/images/logo.png") !important;
+  background-image: url("/static/img/user-info.png");
+}
+
+.logo {
+  height: 100%;
 }
 
