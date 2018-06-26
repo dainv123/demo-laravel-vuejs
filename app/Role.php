@@ -10,7 +10,7 @@ class Role extends Model
     protected  $fillable = ['title'];
     public  $timestamps = true;
 
-    public function permissions(){
-        return $this->belongsToMany(Permission::class);
+    public function permission_role(){
+        return $this->hasMany(App\PermissionRole);
     }
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password','firstname', 'lastname', 'lastname', 'sex', 'birthday', 'status', 'subscribe','role_id', 'remember_token'
     ];
 
     /**
@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function product(){
+        return $this->hasMany('App\Product');
+    }
+
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+    
+    public function hasPermission(Permission $permission){
+        // dd(($this->role)->permissions);
+        // return !!optional(($this->role)->permissions)->contains($permission);
+    }
 }
