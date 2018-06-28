@@ -18,7 +18,8 @@ $white-blur : #ffffffd9;
     background: #29363d;
     padding: 16px 12px;
     .aside-avatar-border{
-        padding: 15px;
+        padding: 25px 25px 13px 25px;
+
         img{
             width: 100%;
             max-width: 225px;
@@ -30,5 +31,6 @@ $white-blur : #ffffffd9;
     h4{
         color: $white-blur;
         text-align: center;
+        font-size: 17px;
     }
 }
