@@ -2,17 +2,21 @@ export default {
   items: [
     {
       name: 'Dashboard',
-      url: '/dashboard',
+      url: 'dashboard',
       icon: 'icon-speedometer'
     },
     {
-      name: 'Dashboard 111',
-      // url: '/dashboard1',
+      name: 'Authentication',
       icon: 'icon-speedometer',
       children: [
         {
-          name: 'Flags',
-          url: '/icons/flags',
+          name: 'User',
+          url: 'user',
+          icon: 'icon-bell'
+        },
+        {
+          name: 'Role',
+          url: 'role',
           icon: 'icon-star',
           badge: {
             variant: 'success',
@@ -20,44 +24,80 @@ export default {
           }
         },
         {
-          name: 'Font Awesome',
-          url: '/icons/font-awesome',
+          name: 'Permission',
+          url: 'permission',
           icon: 'icon-star',
           badge: {
             variant: 'secondary',
             text: '4.7'
           }
-        },
-        {
-          name: 'Simple Line Icons',
-          url: '/icons/simple-line-icons',
-          icon: 'icon-star'
         }
       ]
     },
     {
-      name: 'Charts',
-      url: '/charts',
-      icon: 'icon-pie-chart'
-    },
-    {
-      name: 'Notifications',
-      url: '/notifications',
+      name: 'Content',
       icon: 'icon-bell',
       children: [
         {
-          name: 'Alerts',
-          url: '/notifications/alerts',
+          name: 'Blog',
+          icon: 'icon-bell',
+          children: [
+            {
+              name: 'Blog',
+              url: 'blog',
+              icon: 'icon-bell'    
+            },
+            {
+              name: 'Review',
+              url: 'blogreview',
+              icon: 'icon-bell'    
+            },
+            {
+              name: 'Raiting',
+              url: 'blograiting',
+              icon: 'icon-bell'    
+            }
+          ]
+        },
+        {
+          name: 'Category',
+          url: 'category',
           icon: 'icon-bell'
         },
         {
-          name: 'Badges',
-          url: '/notifications/badges',
+          name: 'Product',
+          icon: 'icon-bell',
+          children: [
+            {
+              name: 'Product',
+              url: 'product',
+              icon: 'icon-bell'    
+            },
+            {
+              name: 'Review',
+              url: 'productreview',
+              icon: 'icon-bell'    
+            },
+            {
+              name: 'Raiting',
+              url: 'productraiting',
+              icon: 'icon-bell'    
+            },
+            {
+              name: 'Image',
+              url: 'productimage',
+              icon: 'icon-bell'    
+            }
+          ]
+        },
+        {
+          name: 'Size',
+          url: 'productsize',
           icon: 'icon-bell'
         },
         {
-          name: 'Modals',
-          url: '/notifications/modals',
+          name: 'Slider',
+          url: 'slider',
           icon: 'icon-bell'
         }
       ]

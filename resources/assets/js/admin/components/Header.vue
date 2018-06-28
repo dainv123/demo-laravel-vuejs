@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <b-link class="navbar-brand" to="#">
-    <img class="logo" alt="rotech" src="http://demo.fieldthemes.com/ps-jugo/store/home2/img/jugo2-logo-15266985512.jpg">
+    <img class="logo" alt="rotech" :src="contact.logo">
     </b-link>
     <button class="navbar-toggler sidebar-toggler d-md-down-none mr-auto" type="button" @click="sidebarToggle">
       <span class="navbar-toggler-icon"></span>
@@ -16,9 +16,22 @@
   </header>
 </template>
 <script>
+import Axios from "axios";
+const api_contact = '/api/local/contact';
 export default {
   name: "c-header",
+  data: () => ({
+    contact: {}
+  }),
+  mounted() {
+    this.getContact()
+  },
   methods: {
+    getContact() {
+      Axios.get(api_contact).then(response => {
+        this.contact = response.data;
+      });
+    },
     sidebarToggle(e) {
       e.preventDefault();
       document.body.classList.toggle("sidebar-hidden");
