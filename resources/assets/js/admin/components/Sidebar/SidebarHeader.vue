@@ -1,5 +1,4 @@
 <template>
-  <div>header</div>
   <!--<div class="sidebar-header"></div>-->
 </template>
 <script>

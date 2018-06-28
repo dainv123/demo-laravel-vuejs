@@ -20035,3 +20035,26 @@ hr.transparent {
   height: 100%;
 }
 
+.aside-menu {
+  background: #29363d;
+  padding: 16px 12px;
+}
+
+.aside-menu .aside-avatar-border {
+  padding: 15px;
+}
+
+.aside-menu .aside-avatar-border img {
+  width: 100%;
+  max-width: 225px;
+  border: 2px solid #3e515b61;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 26px 0px rgba(0, 0, 0, 0.75);
+}
+
+.aside-menu h4 {
+  color: #ffffffd9;
+  text-align: center;
+}
+

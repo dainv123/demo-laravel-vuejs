@@ -1,3 +1,10 @@
+@mixin box-shadow($param) {
+    -webkit-box-shadow:$param;
+    -moz-box-shadow:$param;
+    box-shadow:$param;
+}
+$white-blur : #ffffffd9;
+
 // Here you can add other styles
 .app-header.navbar .navbar-toggler-icon.navbar-toggler-icon-user{
     height: 23px;
@@ -6,4 +13,22 @@
 
 .logo{
     height: 100%;
+}
+.aside-menu{
+    background: #29363d;
+    padding: 16px 12px;
+    .aside-avatar-border{
+        padding: 15px;
+        img{
+            width: 100%;
+            max-width: 225px;
+            border: 2px solid #3e515b61;
+            border-radius: 50%;
+            @include box-shadow(0px 0px 26px 0px rgba(0,0,0,0.75));
+        }
+    }
+    h4{
+        color: $white-blur;
+        text-align: center;
+    }
 }
