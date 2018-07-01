@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Datatable from 'vue2-datatable-component'
+import VueGoodTable from 'vue-good-table'
 
 // Containers
 import Full from '../containers/Full'
@@ -9,7 +9,7 @@ import Full from '../containers/Full'
 import Dashboard from '../views/Dashboard/Dashboard'
 import Role from '../views/Role/list'
 
-Vue.use(Datatable)
+Vue.use(VueGoodTable)
 Vue.use(Router)
 
 export default new Router({

@@ -1,39 +1,36 @@
 <template>
     <div class="show-items">
         <p class="text-info">Role</p>
-        <div class="box box-primary">
-            <div class="box-body">
-                <table class="table table-bordered" id="balloon-table">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th width="1%">Action</th>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>dai 1</td>
-                        <td>dai 2</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>dai 1</td>
-                        <td>dai 2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>dai 1</td>
-                        <td>dai 2</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>dai 1</td>
-                        <td>dai 2</td>
-                    </tr>
-                </table>
+        <b-col sm="12">
+            <b-card>
+            <div slot="header">
+                Example Form
             </div>
-        </div>
+            <b-form>
+                <b-form-group>
+                <b-input-group>
+                    <b-form-input type="text" placeholder="Username"></b-form-input>
+                    <b-input-group-append><b-input-group-text><i class="fa fa-user"></i></b-input-group-text></b-input-group-append>
+                </b-input-group>
+                </b-form-group>
+                <b-form-group>
+                <b-input-group>
+                    <b-form-input type="email" placeholder="Email" autocomplete="email"></b-form-input>
+                    <b-input-group-append><b-input-group-text><i class="fa fa-envelope"></i></b-input-group-text></b-input-group-append>
+                </b-input-group>
+                </b-form-group>
+                <b-form-group>
+                <b-input-group>
+                    <b-form-input type="password" placeholder="Password" autocomplete="current-password"></b-form-input>
+                    <b-input-group-append><b-input-group-text><i class="fa fa-asterisk"></i></b-input-group-text></b-input-group-append>
+                </b-input-group>
+                </b-form-group>
+                <div class="form-group form-actions">
+                <b-button type="submit" class="btn btn-sm btn-secondary">Submit</b-button>
+                </div>
+            </b-form>
+            </b-card>
+        </b-col>
     </div>
 </template>
 
