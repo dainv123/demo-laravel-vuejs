@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->text('intro');
             $table->longText('content');
             $table->string('image');
+            $table->string('hoverimage');
             $table->string('keywords');
             $table->string('description');
             $table->string('availability')->default('In stock');

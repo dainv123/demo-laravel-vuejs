@@ -15,22 +15,92 @@ $white-blur : #ffffffd9;
     height: 100%;
 }
 .aside-menu{
-    background: #29363d;
+    background: #212b31;
     padding: 16px 12px;
     .aside-avatar-border{
         padding: 25px 25px 13px 25px;
-
-        img{
+        text-align: center;
+        position: relative;
+        .avatar{
             width: 100%;
-            max-width: 225px;
-            border: 2px solid #3e515b61;
+            max-width: 125px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
             border-radius: 50%;
-            @include box-shadow(0px 0px 26px 0px rgba(0,0,0,0.75));
+            margin: 0 auto;
+            @include box-shadow(0px 0px 26px 0px rgba(255, 255, 255, 0.58));
+        }
+        .camera{
+            width: 20px;
+            height: 20px;
+            background: #18bfa1;
+            position: absolute;
+            border-radius: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            left: 50%;
+            margin-left: 32px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            @include box-shadow(0px 0px 26px 0px rgba(255, 255, 255, 0.58));
         }
     }
     h4{
         color: $white-blur;
         text-align: center;
         font-size: 17px;
+        font-weight: 400;
+        position: relative;
+        &:after{
+            content: "";
+            width: 60px;
+            height: 1px;
+            position: absolute;
+            bottom: -5px;
+            transform: translateX(-50%);
+            left: 50%;
+            background: #18bfa1;
+        
+        }
     }
 }
+.aside-info{
+    padding-top: 10px;
+    ul{
+        padding-left: 0;
+        list-style: none;
+        a{
+            color: #fff;
+            i{
+                display: inline-block;
+                width: 20px;
+                margin: 0 0.5rem 0 0;
+                font-size: 14px;
+                color: #536c79;
+                text-align: center;
+            }
+        }
+    }
+    .active, .nav-item:hover, .nav-item:hover i{
+        color: #fff;
+        background: #20a8d8;
+    }
+}
+// .show-items{
+//     .table{
+//         thead{ 
+//             tr{
+//                 background: #27ae60 !important;
+//                 color: #fff;
+//                 th{border-bottom-width: 1px;}
+//             }
+//         }
+//         td, td, th{
+//             padding: 0.5rem;
+//         }
+//         tr:nth-of-type(odd){
+//             background: #e9e9e9
+//         }
+//         tr:nth-of-type(even){
+//             background: #f6f6f6;
+//         }
+//     }
+// }

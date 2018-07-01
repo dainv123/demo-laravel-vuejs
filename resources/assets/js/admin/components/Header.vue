@@ -11,20 +11,20 @@
     </button>
     <span>Teo Nguyen</span>
     <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" @click="asideToggle">
-      <span class="navbar-toggler-icon navbar-toggler-icon-user"></span>
+      <i class="icon-user"></i>
     </button>
   </header>
 </template>
 <script>
 import Axios from "axios";
-const api_contact = '/api/local/contact';
+const api_contact = "/api/local/contact";
 export default {
   name: "c-header",
   data: () => ({
     contact: {}
   }),
   mounted() {
-    this.getContact()
+    this.getContact();
   },
   methods: {
     getContact() {
