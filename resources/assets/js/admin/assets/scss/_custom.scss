@@ -98,7 +98,7 @@ $green-blur: #18bfa1bd;
         font-size: 12px;
         line-height: 1.5;
         border-radius: 3px;
-        border: 1px solid #29363de3;
+        border: 1px solid #3e515b5c;
     }
     
     .vgt-table{
@@ -165,7 +165,7 @@ $green-blur: #18bfa1bd;
             }
             &.footer__navigation__page-btn:first-child, &.footer__navigation__page-btn:last-child{
                 color: #000;
-                background: #dddddd;
+                
                 &:hover{
                     background: $green-blur;
                     color: #fff;

@@ -4,6 +4,7 @@ import VueGoodTable from 'vue-good-table'
 
 // Containers
 import Full from '../containers/Full'
+import Wrapper from '../containers/Wrapper'
 
 // Views
 import Dashboard from '../views/Dashboard/Dashboard'
@@ -31,16 +32,11 @@ export default new Router({
           component: Dashboard
         },
         {
-          path: 'dashboard1',
-          name: 'Dashboard1',
-          component: RoleList
-        },
-        {
           path: 'role',
-          // redirect: 'role/list',
+          redirect: 'role/list',
           name: 'Role',
-          // component: RoleList,
-          children:[
+          component: Wrapper,
+          children: [
             {
               path: 'list',
               name: 'List',

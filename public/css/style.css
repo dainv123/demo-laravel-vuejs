@@ -90,7 +90,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @-ms-viewport {
@@ -20158,7 +20158,7 @@ hr.transparent {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
-  border: 1px solid #29363de3;
+  border: 1px solid #3e515b5c;
 }
 
 .show-list-item .vgt-table {
@@ -20232,7 +20232,6 @@ hr.transparent {
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:first-child,
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:last-child {
   color: #000;
-  background: #dddddd;
 }
 
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:first-child:hover,

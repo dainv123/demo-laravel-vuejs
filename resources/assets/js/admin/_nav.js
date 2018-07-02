@@ -45,17 +45,17 @@ export default {
             {
               name: 'Blog',
               url: 'blog',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             },
             {
               name: 'Review',
               url: 'blogreview',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             },
             {
               name: 'Raiting',
               url: 'blograiting',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             }
           ]
         },
@@ -71,22 +71,22 @@ export default {
             {
               name: 'Product',
               url: 'product',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             },
             {
               name: 'Review',
               url: 'productreview',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             },
             {
               name: 'Raiting',
               url: 'productraiting',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             },
             {
               name: 'Image',
               url: 'productimage',
-              icon: 'icon-bell'    
+              icon: 'icon-bell'
             }
           ]
         },
