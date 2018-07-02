@@ -90,7 +90,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 @-ms-viewport {
@@ -20150,16 +20150,7 @@ hr.transparent {
   padding-top: 30px;
 }
 
-.show-list-item .vgt-table {
-  width: 100%;
-  clear: both;
-  margin-top: 6px !important;
-  margin-bottom: 6px !important;
-  max-width: none !important;
-}
-
-.show-list-item .vgt-table .vgt-input {
-  position: absolute;
+.show-list-item .vgt-input {
   top: 7px;
   right: 1.25rem;
   height: 30px;
@@ -20167,7 +20158,15 @@ hr.transparent {
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid #29363de3;
+}
+
+.show-list-item .vgt-table {
+  width: 100%;
+  clear: both;
+  margin-top: 10px !important;
+  margin-bottom: 15px !important;
+  max-width: none !important;
 }
 
 .show-list-item .vgt-table td,
@@ -20184,10 +20183,6 @@ hr.transparent {
   background: #18bfa1bd;
   color: #fff;
   cursor: pointer;
-}
-
-.show-list-item .vgt-table thead tr:last-child {
-  background: #157d7dcf;
 }
 
 .show-list-item .footer__row-count.vgt-pull-left,
@@ -20237,13 +20232,14 @@ hr.transparent {
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:first-child,
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:last-child {
   color: #000;
+  background: #dddddd;
 }
 
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:first-child:hover,
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:last-child:hover {
-  background: #20c997;
+  background: #18bfa1bd;
   color: #fff;
-  border-color: #4dbd74;
+  border-color: #18bfa1bd;
 }
 
 .show-list-item .footer__row-count__select {

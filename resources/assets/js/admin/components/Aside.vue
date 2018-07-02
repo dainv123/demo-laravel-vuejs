@@ -26,7 +26,7 @@
       <li class="nav-item">
           <div>
             <a href="#/blog" class="nav-link">
-              <i class="icon-bell"></i> Notification
+              <i class="icon-bell"></i> Notification <span class="badge badge-success">4</span>
             </a>
         </div>
       </li>

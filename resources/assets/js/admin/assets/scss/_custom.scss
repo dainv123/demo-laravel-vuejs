@@ -4,6 +4,7 @@
     box-shadow:$param;
 }
 $white-blur : #ffffffd9;
+$green-blur: #18bfa1bd;
 
 // Here you can add other styles
 .app-header.navbar .navbar-toggler-icon.navbar-toggler-icon-user{
@@ -88,24 +89,26 @@ $white-blur : #ffffffd9;
     position: relative;
     padding-top: 30px;
     
+    .vgt-input{
+        // position: absolute;
+        top: 7px;
+        right:  1.25rem;
+        height: 30px;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        border: 1px solid #29363de3;
+    }
+    
     .vgt-table{
         width: 100%;
         clear: both;
-        margin-top: 6px !important;
-        margin-bottom: 6px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px !important;
         max-width: none !important;
 
-        .vgt-input{
-            position: absolute;
-            top: 7px;
-            right:  1.25rem;
-            height: 30px;
-            padding: 5px 10px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-        }
+        
         td, th {
             padding: 8px 18px;
             border: 1px solid #3e515b5c
@@ -115,13 +118,13 @@ $white-blur : #ffffffd9;
             background-color: #f9f9f9;
         }
         thead tr:first-child {
-            background: #18bfa1bd;
+            background: $green-blur;
             color: #fff;
             cursor: pointer;
         }
-        thead tr:last-child {
-            background: #157d7dcf;
-        }
+        // thead tr:last-child {
+        //     background: #20c99754;
+        // }
         
     }
     .footer__row-count.vgt-pull-left,.footer__navigation.vgt-pull-right{
@@ -162,10 +165,11 @@ $white-blur : #ffffffd9;
             }
             &.footer__navigation__page-btn:first-child, &.footer__navigation__page-btn:last-child{
                 color: #000;
+                background: #dddddd;
                 &:hover{
-                    background: #20c997;
+                    background: $green-blur;
                     color: #fff;
-                    border-color: #4dbd74;
+                    border-color: $green-blur;
                 }
             }
         }
