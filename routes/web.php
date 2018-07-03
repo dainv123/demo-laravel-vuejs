@@ -14,19 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin/dai', function () {
+Route::get('/admin', function () {
     return view('admin.index');
 });
-
-Route::get('/admin/apip', ['uses' => 'RoleController@getList']);
-
-// Route::group(['namespace' => 'Admin'], function () {
-//     Route::group(['as' => 'preroll.', 'prefix' => 'preroll'], function () {
-//         Route::get('/', ['as' => 'index', 'uses' => 'PrerollController@getIndex']);
-//         Route::get('create', ['as' => 'create', 'uses' => 'PrerollController@getCreate']);
-//         Route::post('create', ['as' => 'create', 'uses' => 'PrerollController@postCreate']);
-//         Route::get('{id}/edit', ['as' => 'edit', 'uses' => 'PrerollController@getEdit']);
-//         Route::post('{id}/edit', ['as' => 'edit', 'uses' => 'PrerollController@postEdit']);
-//         Route::post('delete', ['as' => 'delete', 'uses' => 'PrerollController@postDelete']);
-//     });
-// });

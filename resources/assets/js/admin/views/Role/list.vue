@@ -39,7 +39,7 @@
 </template>
 
 <script>
-// import GroupedTable from './grouped-table';
+import Axios from "axios";
 
 export default {
   props: [],
@@ -75,44 +75,18 @@ export default {
           createdAt: "2018-02-18T00:00:43-05:00",
           action:
             '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        },
-        {
-          id: 2,
-          title: "Jane",
-          createdAt: "2011-10-31",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        },
-        {
-          id: 3,
-          title: "Susan",
-          createdAt: "2011-10-30",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        },
-        {
-          id: 4,
-          title: "Chris",
-          createdAt: "2011-10-11",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        },
-        {
-          id: 5,
-          title: "Dan",
-          createdAt: "2018-02-18T00:00:43-05:00",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        },
-        {
-          id: 6,
-          title: "Dan",
-          createdAt: "2018-02-18T00:00:43-05:00",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
         }
       ]
     };
+  },
+  mounted() {
+    Axios.get("api/role")
+      .then(response => {
+        console.log("response", response);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
   },
   methods: {
     toggleSelectRow(params) {
