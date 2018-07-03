@@ -46,7 +46,6 @@ export default {
   name: "role-list",
   data() {
     return {
-      // searchTerm: "",
       columns: [
         {
           label: "Title",
