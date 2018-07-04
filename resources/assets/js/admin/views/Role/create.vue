@@ -24,6 +24,7 @@
 
 <script>
 export default {
-  name: "role-create"
+  name: "role-create",
+  methods: {}
 };
 </script>

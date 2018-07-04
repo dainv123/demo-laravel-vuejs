@@ -13,32 +13,45 @@ class RoleController extends Controller
         $datas = Role::select('id', 'title', 'created_at')->orderBy('id','DESC')->get()->toArray();
         return Datatables::of($datas)
             ->addColumn('action', function ($data) {
-                return '<b-link class="float-right btn btn-primary" :to="create">Create</b-link>';
+                return $data['id'];
             })
             ->rawColumns(['action'])
             ->make(true);
             $demo = new Role();
-            dd(datas);
         return $datas;
     }
 
-    public function getCreate(){
-        return 1;
+    public function getCreate($id){
+        
     }
 
     public function postCreate(){
-        return 2;
+        
     }
 
-    public function getEdit(){
-        return 3;
+    public function getEdit($id){
+        $datas = Role::find($id);
+        return $datas;
     }
 
-    public function postEdit(){
-        return 4;
+    public function postEdit(Request $request){
+        dd(111);
     }
 
-    public function postDelete(){
-        return 5;
+    public function postDelete(Request $request){
+        $data = Role::where([
+            'id' => $request->get('id'),
+            // 'user_id' => Auth::id()
+        ])->first();
+
+        if ($data->delete()) {
+            return response()->json([
+                'status' => true
+            ]);
+        }
+
+        return response()->json([
+            'status' => false
+        ]);
     }
 }

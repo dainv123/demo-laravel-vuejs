@@ -43,7 +43,7 @@ export default new Router({
               component: RoleList
             },
             {
-              path: 'edit',
+              path: 'edit/:id',
               name: 'Edit',
               component: RoleEdit
             },

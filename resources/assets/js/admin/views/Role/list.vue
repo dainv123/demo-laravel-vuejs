@@ -3,35 +3,34 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
-            List Role
-            <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
+          List Role
+          <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
         </div>
         <vue-good-table
           ref="my-table"
           @on-column-filter="onColumnFilter"
           @on-row-click="onColumnFilter"
-        
           @on-sort-change="onSortChange"
           :columns="columns"
           :rows="rows"
           theme="black-rhino"
           :line-numbers="true"
           :pagination-options="{ enabled: true, perPage: 5}"
-          :select-options="{
-            enabled: false,
-            selectOnCheckboxOnly: false,
-          }"
+          :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
           styleClass="vgt-table condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
           :search-options="{
             enabled: true,
           }">
-
-          <!-- <template slot="table-row" slot-scope="rows">
-            <div>
-              <td>{{rows.row.name}}</td>
-            </div>
-          </template> -->
+          <template slot="table-row" slot-scope="props">
+            <span v-if="props.column.field == 'action'">
+              <b-link class="btn btn-warning" :to="'edit/'+props.row.action"><i class="fa fa-pencil"></i></b-link>&nbsp;
+              <button type="submit" class="btn btn-danger" @click="del(props.row.action)"><i class="fa fa-trash"></i></button>
+            </span>
+            <span v-else>
+              {{props.formattedRow[props.column.field]}}
+            </span>
+          </template>
         </vue-good-table>
       </b-card>
     </b-col>
@@ -46,6 +45,8 @@ export default {
   name: "role-list",
   data() {
     return {
+      url: "",
+      url_delete: "",
       columns: [
         {
           label: "Title",
@@ -57,7 +58,7 @@ export default {
         },
         {
           label: "Created On",
-          field: "createdAt",
+          field: "created_at",
           type: "date",
           dateInputFormat: "YYYY-MM-DD",
           dateOutputFormat: "LLL"
@@ -68,27 +69,45 @@ export default {
           html: true
         }
       ],
-      rows: [
-        {
-          id: 1,
-          title: "John",
-          createdAt: "2018-02-18T00:00:43-05:00",
-          action:
-            '<button class="btn btn-warning"><i class="fa fa-pencil"></i></button>&nbsp;<button class="btn btn-danger"><i class="fa fa-trash"></i></button>'
-        }
-      ]
+      rows: []
     };
   },
   mounted() {
-    Axios.get("api/role")
+    this.url = "api/role";
+    Axios.get(this.url)
       .then(response => {
-        console.log("response", response);
+        console.log("response", response.data.data);
+        this.rows = response.data.data;
       })
       .catch(function(error) {
         console.error(error);
       });
   },
   methods: {
+    del(id) {
+      swal({
+        title: "Are you sure?",
+        text: "Are you delete",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          var data_delete = { id: id };
+          this.url_delete = "api/role/delete";
+          console.log("url", this.url_delete, data_delete);
+          Axios.post(this.url_delete, data_delete)
+            .then(response => {
+              // oTable.draw(false);
+              if (response.status == true)
+                swal("Delete Success!", "Delete inpage success!", "success");
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+        }
+      });
+    },
     toggleSelectRow(params) {
       console.log(params.row, params.pageIndex, params.selected);
     },
