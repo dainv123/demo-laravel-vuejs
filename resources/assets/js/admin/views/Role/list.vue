@@ -7,7 +7,7 @@
           <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
         </div>
         <vue-good-table
-          ref="my-table"
+          ref="role_table"
           @on-column-filter="onColumnFilter"
           @on-row-click="onColumnFilter"
           @on-sort-change="onSortChange"
@@ -73,8 +73,12 @@ export default {
     };
   },
   mounted() {
-    this.url = "api/role";
-    Axios.get(this.url)
+    this.get_list()
+  },
+  methods: {
+    get_list(){
+      this.url = "api/role";
+      Axios.get(this.url)
       .then(response => {
         console.log("response", response.data.data);
         this.rows = response.data.data;
@@ -82,8 +86,7 @@ export default {
       .catch(function(error) {
         console.error(error);
       });
-  },
-  methods: {
+    },
     del(id) {
       swal({
         title: "Are you sure?",
@@ -98,11 +101,17 @@ export default {
           console.log("url", this.url_delete, data_delete);
           Axios.post(this.url_delete, data_delete)
             .then(response => {
-              // oTable.draw(false);
-              if (response.status == true)
-                swal("Delete Success!", "Delete inpage success!", "success");
+              if (response.data.status == true)
+                {
+                  this.get_list();
+                  swal("Delete Success!", "Delete inpage success!", "success");
+                }
+              else
+                swal("Oops!", "Delete Faild!", "error");
             })
             .catch(function(error) {
+              swal("Oops!", "Delete Faild!", "error");
+              e.preventDefault();
               console.error(error);
             });
         }

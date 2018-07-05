@@ -5,18 +5,16 @@
             <div slot="header">
                 Edit Role
             </div>
-            <b-form>
                 <b-form-group>
                 <b-input-group>
-                    <b-form-input type="text" placeholder="Title" v-model="name"></b-form-input>
+                    <b-form-input type="text" placeholder="Title" v-model="title"></b-form-input>
                     <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                 </b-input-group>
                 </b-form-group>
                 <div class="form-group form-actions">
                 <router-link class="btn btn-danger" :to="'../list'">Cancel</router-link>
-                <b-button type="submit" variant="primary" @click="save()">Edit</b-button>
+                <b-button type="submit" variant="primary" @click="edit(id)">Edit</b-button>
                 </div>
-            </b-form>
             </b-card>
         </b-col>
     </div>
@@ -29,9 +27,8 @@ export default {
   data() {
     return {
       id: 0,
-      name: "",
-      url_edit: "",
-      url_delete: ""
+      title: "",
+      url_edit: ""
     };
   },
   mounted() {
@@ -40,14 +37,14 @@ export default {
     Axios.get(this.url_edit)
       .then(response => {
         console.log("response", response.data);
-        this.name = response.data.title;
+        this.title = response.data.title;
       })
       .catch(function(error) {
         console.error(error);
       });
   },
   methods: {
-    save() {
+    edit($id) {
       swal({
         title: "Are you sure?",
         text: "Are you edit",
@@ -56,12 +53,23 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          Axios.get("api/role")
+          var data_edit = { id: id, title: this.title };
+          var url_edit = "api/role/edit";
+          Axios.post(url_edit, data_edit)
             .then(response => {
-              this.rows = response.data.data;
+                if (response.data.status == true)
+                {
+                    // this.get_list();
+                    this.$router.push('list');
+                    swal("Edit Success!", "Edit success!", "success");
+                }
+                else
+                    swal("Oops!", "Edit Faild!", "error");
             })
             .catch(function(error) {
-              console.error(error);
+                swal("Oops!", "Edit Faild!", "error");
+                e.preventDefault();
+                console.error(error);
             });
         }
       });

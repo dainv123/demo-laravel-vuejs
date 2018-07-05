@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import VueGoodTable from 'vue-good-table'
 
 // Containers
 import Full from '../containers/Full'
@@ -12,7 +11,6 @@ import RoleList from '../views/Role/list'
 import RoleEdit from '../views/Role/edit'
 import RoleCreate from '../views/Role/create'
 
-Vue.use(VueGoodTable)
 Vue.use(Router)
 
 export default new Router({

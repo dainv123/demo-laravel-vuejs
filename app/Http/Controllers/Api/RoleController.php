@@ -21,12 +21,20 @@ class RoleController extends Controller
         return $datas;
     }
 
-    public function getCreate($id){
-        
-    }
+    public function postCreate(Request $request){
+        $datas = new Role();
+        $data = [
+            'title' => $request->get('title'),
+        ];
+        $dataCreated = Role::create($data);
+        if ($dataCreated->id)
+            return response()->json([
+                'status' => true,
+            ]);
 
-    public function postCreate(){
-        
+        return response()->json([
+            'status' => false
+        ]);
     }
 
     public function getEdit($id){
@@ -35,13 +43,28 @@ class RoleController extends Controller
     }
 
     public function postEdit(Request $request){
-        dd(111);
+        $data = Role::where([
+            'id' => $request->get('id'),
+        ])->first();
+
+        if ($data) {
+            $dataEdit = [
+                'title' => $request->get('title'),
+            ];
+            $data->update($dataEdit);
+            return response()->json([
+                'status' => true,
+            ]);
+        }
+        
+        return response()->json([
+            'status' => false
+        ]);
     }
 
     public function postDelete(Request $request){
         $data = Role::where([
             'id' => $request->get('id'),
-            // 'user_id' => Auth::id()
         ])->first();
 
         if ($data->delete()) {
