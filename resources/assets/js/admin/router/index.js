@@ -10,6 +10,12 @@ import Dashboard from '../views/Dashboard/Dashboard'
 import RoleList from '../views/Role/list'
 import RoleEdit from '../views/Role/edit'
 import RoleCreate from '../views/Role/create'
+import ProductSizeList from '../views/ProductSize/list'
+import ProductSizeEdit from '../views/ProductSize/edit'
+import ProductSizeCreate from '../views/ProductSize/create'
+import ProductImageList from '../views/ProductImage/list'
+import ProductImageEdit from '../views/ProductImage/edit'
+import ProductImageCreate from '../views/ProductImage/create'
 
 Vue.use(Router)
 
@@ -37,18 +43,41 @@ export default new Router({
           children: [
             {
               path: 'list',
-              name: 'List',
+              name: 'List Role',
               component: RoleList
             },
             {
               path: 'edit/:id',
-              name: 'Edit',
+              name: 'Edit Role',
               component: RoleEdit
             },
             {
               path: 'create',
-              name: 'Create',
+              name: 'Create Role',
               component: RoleCreate
+            },
+          ]
+        },
+        {
+          path: 'productsize',
+          redirect: 'productsize/list',
+          name: 'Product Size',
+          component: Wrapper,
+          children: [
+            {
+              path: 'list',
+              name: 'List Size',
+              component: ProductSizeList
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit Size',
+              component: ProductSizeEdit
+            },
+            {
+              path: 'create',
+              name: 'Create Size',
+              component: ProductSizeCreate
             },
           ]
         }

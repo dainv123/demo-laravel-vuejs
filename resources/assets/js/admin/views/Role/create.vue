@@ -28,42 +28,42 @@ export default {
   data() {
     return {
       title: ""
-    }
+    };
   },
-  mount(){
-    this.title = title
+  mount() {
+    this.title = title;
   },
   methods: {
-    create(){
-        swal({
-            title: "Are you sure?",
-            text: "Are you create",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-          }).then(willDelete => {
-            if (willDelete) {
-              var data_create = { title: this.title };
-              var url_create = "api/role/create";
+    create() {
+      swal({
+        title: "Are you sure?",
+        text: "Are you create",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          var data_create = { title: this.title };
+          var url_create = "api/role/create";
+          this.$validator.validateAll().then(result => {
+            if (result) {
               Axios.post(url_create, data_create)
                 .then(response => {
-                    if (response.data.status == true)
-                    {
-                        // this.get_list();
-                        this.$router.push('list');
-                        swal("Create Success!", "Create success!", "success");
-                    }
-                    else
-                        swal("Oops!", "Create Faild!", "error");
+                  if (response.data.status == true) {
+                    this.$router.push("list");
+                    swal("Create Success!", "Create success!", "success");
+                  } else swal("Oops!", "Create Faild!", "error");
                 })
                 .catch(function(error) {
-                    swal("Oops!", "Create Faild!", "error");
-                    e.preventDefault();
-                    console.error(error);
+                  swal("Oops!", "Create Faild!", "error");
+                  e.preventDefault();
+                  console.error(error);
                 });
-            }
+            } else swal("Oops!", "Create Faild!", "error");
           });
-        },
+        }
+      });
     }
+  }
 };
 </script>

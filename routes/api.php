@@ -19,13 +19,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('local/{filename}', ['uses' => 'ApiLocalController@getInfo']);
 
-// Route::get('role', ['uses' => 'RoleController@getList']);
 
 Route::group(['as' => 'role.', 'prefix' => 'role'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'RoleController@getList']);
     Route::get('create', ['as' => 'create', 'uses' => 'RoleController@getCreate']);
     Route::post('create', ['as' => 'create', 'uses' => 'RoleController@postCreate']);
     Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'RoleController@getEdit']);
-    Route::post('{edit/{id}', ['as' => 'edit', 'uses' => 'RoleController@postEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'RoleController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'RoleController@postDelete']);
+});
+
+Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'ProductSizeController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'ProductSizeController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'ProductSizeController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'ProductSizeController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'ProductSizeController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'ProductSizeController@postDelete']);
 });

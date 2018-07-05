@@ -7,9 +7,10 @@
             </div>
                 <b-form-group>
                 <b-input-group>
-                    <b-form-input type="text" placeholder="Title" v-model="title"></b-form-input>
+                    <b-form-input type="text" placeholder="Title" v-validate="'required'" name="title" v-model="title"></b-form-input>
                     <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                 </b-input-group>
+                <span style="color: red" v-show="errors.has('title')">{{ errors.first('title') }}</span>
                 </b-form-group>
                 <div class="form-group form-actions">
                 <router-link class="btn btn-danger" :to="'../list'">Cancel</router-link>
@@ -44,7 +45,7 @@ export default {
       });
   },
   methods: {
-    edit($id) {
+    edit(id) {
       swal({
         title: "Are you sure?",
         text: "Are you edit",
@@ -54,22 +55,18 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_edit = { id: id, title: this.title };
-          var url_edit = "api/role/edit";
+          var url_edit = "api/role/edit/" + id;
           Axios.post(url_edit, data_edit)
             .then(response => {
-                if (response.data.status == true)
-                {
-                    // this.get_list();
-                    this.$router.push('list');
-                    swal("Edit Success!", "Edit success!", "success");
-                }
-                else
-                    swal("Oops!", "Edit Faild!", "error");
+              if (response.data.status == true) {
+                this.$router.push("../list");
+                swal("Edit Success!", "Edit success!", "success");
+              } else swal("Oops!", "Edit Faild!", "error");
             })
             .catch(function(error) {
-                swal("Oops!", "Edit Faild!", "error");
-                e.preventDefault();
-                console.error(error);
+              swal("Oops!", "Edit Faild!", "error");
+              e.preventDefault();
+              console.error(error);
             });
         }
       });
