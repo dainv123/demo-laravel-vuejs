@@ -13,9 +13,9 @@ import RoleCreate from '../views/Role/create'
 import ProductSizeList from '../views/ProductSize/list'
 import ProductSizeEdit from '../views/ProductSize/edit'
 import ProductSizeCreate from '../views/ProductSize/create'
-import ProductImageList from '../views/ProductImage/list'
-import ProductImageEdit from '../views/ProductImage/edit'
-import ProductImageCreate from '../views/ProductImage/create'
+import CategoryList from '../views/Category/list'
+import CategoryEdit from '../views/Category/edit'
+import CategoryCreate from '../views/Category/create'
 
 Vue.use(Router)
 
@@ -78,6 +78,29 @@ export default new Router({
               path: 'create',
               name: 'Create Size',
               component: ProductSizeCreate
+            },
+          ]
+        },
+        {
+          path: 'category',
+          redirect: 'category/list',
+          name: 'Category',
+          component: Wrapper,
+          children: [
+            {
+              path: 'list',
+              name: 'List Category',
+              component: CategoryList
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit Category',
+              component: CategoryEdit
+            },
+            {
+              path: 'create',
+              name: 'Create Category',
+              component: CategoryCreate
             },
           ]
         }

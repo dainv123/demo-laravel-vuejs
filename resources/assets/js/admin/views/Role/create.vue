@@ -13,7 +13,7 @@
                 <span style="color: red" v-show="errors.has('title')">{{ errors.first('title') }}</span>
                 </b-form-group>
                 <div class="form-group form-actions">
-                    <b-link class="btn btn-danger" :to="'list'">Cancel</b-link>
+                    <b-link class="btn btn-danger" :to="{ name: 'List Role'}">Cancel</b-link>
                     <b-button type="submit" variant="primary" @click="create">Create</b-button>
                 </div>
             </b-card>
@@ -29,9 +29,6 @@ export default {
     return {
       title: ""
     };
-  },
-  mount() {
-    this.title = title;
   },
   methods: {
     create() {
@@ -50,7 +47,7 @@ export default {
               Axios.post(url_create, data_create)
                 .then(response => {
                   if (response.data.status == true) {
-                    this.$router.push("list");
+                    this.$router.push({ name: 'List Role'});
                     swal("Create Success!", "Create success!", "success");
                   } else swal("Oops!", "Create Faild!", "error");
                 })

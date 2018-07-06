@@ -13,7 +13,7 @@
                 <span style="color: red" v-show="errors.has('title')">{{ errors.first('title') }}</span>
                 </b-form-group>
                 <div class="form-group form-actions">
-                <router-link class="btn btn-danger" :to="'../list'">Cancel</router-link>
+                <router-link class="btn btn-danger" :to="{ name: 'List Role'}">Cancel</router-link>
                 <b-button type="submit" variant="primary" @click="edit(id)">Edit</b-button>
                 </div>
             </b-card>
@@ -59,7 +59,7 @@ export default {
           Axios.post(url_edit, data_edit)
             .then(response => {
               if (response.data.status == true) {
-                this.$router.push("../list");
+                this.$router.push({ name: 'List Role'});
                 swal("Edit Success!", "Edit success!", "success");
               } else swal("Oops!", "Edit Faild!", "error");
             })

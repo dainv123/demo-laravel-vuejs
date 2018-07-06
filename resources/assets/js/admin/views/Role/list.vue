@@ -4,7 +4,7 @@
       <b-card>
         <div slot="header">
           List Role
-          <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
+          <b-link class="float-right btn btn-primary" :to="{ name: 'Create Role'}">Create</b-link>
         </div>
         <vue-good-table
           ref="role_table"

@@ -20,7 +20,7 @@
                     <span style="color: red" v-show="errors.has('dimension')">{{ errors.first('dimension') }}</span>
                 </b-form-group>
                 <div class="form-group form-actions">
-                    <b-link class="btn btn-danger" :to="'list'">Cancel</b-link>
+                    <b-link class="btn btn-danger" :to="{ name: 'Create Size'}">Cancel</b-link>
                     <b-button type="submit" variant="primary" @click="create">Create</b-button>
                 </div>
             </b-card>
@@ -38,9 +38,7 @@ export default {
       dimension: ""
     };
   },
-  mount() {
-    this.name = name;
-    this.dimension = dimension;
+  mounted() {
   },
   methods: {
     create() {

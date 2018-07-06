@@ -37,3 +37,12 @@ Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'ProductSizeController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'ProductSizeController@postDelete']);
 });
+
+Route::group(['as' => 'role.', 'prefix' => 'category'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'CategoryController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'CategoryController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'CategoryController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'CategoryController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'CategoryController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'CategoryController@postDelete']);
+});
