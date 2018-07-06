@@ -39,7 +39,7 @@ class CategoryController extends Controller
             })
             ->removeColumn('id')
             ->removeColumn('name')
-            ->removeColumn('parent_id')
+            // ->removeColumn('parent_id')
             ->rawColumns(['value'])
             ->make(true);
             $demo = new Category();

@@ -3,7 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
-                Create Category 1
+                Create Category
             </div>
                 <b-form-group>
                     <b-input-group>
@@ -21,7 +21,15 @@
                 </b-form-group>
                 <b-form-group>
                     <b-input-group>
-                        <b-form-select v-model="parent.selected" :options="parent.options" />
+                          <b-form-select v-model="parent.selected">
+                          <option :value="null">Please select an option</option>
+                          <option value="a">Option A</option>
+                          <option value="b" disabled>Option B (disabled)</option>
+                          <optgroup label="Grouped Options">
+                            <option :value="{'C':'3PO'}">Option with object value</option>
+                            <option :value="{'R':'2D2'}">Another option with object value</option>
+                          </optgroup>
+                        </b-form-select>
                     </b-input-group>
                 </b-form-group>
                 <div class="form-group form-actions">

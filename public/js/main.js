@@ -34937,6 +34937,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -76582,7 +76590,7 @@ var render = function() {
             "b-card",
             [
               _c("div", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("\n            Create Category 1\n        ")
+                _vm._v("\n            Create Category\n        ")
               ]),
               _vm._v(" "),
               _c(
@@ -76713,16 +76721,51 @@ var render = function() {
                   _c(
                     "b-input-group",
                     [
-                      _c("b-form-select", {
-                        attrs: { options: _vm.parent.options },
-                        model: {
-                          value: _vm.parent.selected,
-                          callback: function($$v) {
-                            _vm.$set(_vm.parent, "selected", $$v)
-                          },
-                          expression: "parent.selected"
-                        }
-                      })
+                      _c(
+                        "b-form-select",
+                        {
+                          model: {
+                            value: _vm.parent.selected,
+                            callback: function($$v) {
+                              _vm.$set(_vm.parent, "selected", $$v)
+                            },
+                            expression: "parent.selected"
+                          }
+                        },
+                        [
+                          _c("option", { domProps: { value: null } }, [
+                            _vm._v("Please select an option")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "a" } }, [
+                            _vm._v("Option A")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "b", disabled: "" } },
+                            [_vm._v("Option B (disabled)")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "optgroup",
+                            { attrs: { label: "Grouped Options" } },
+                            [
+                              _c(
+                                "option",
+                                { domProps: { value: { C: "3PO" } } },
+                                [_vm._v("Option with object value")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { domProps: { value: { R: "2D2" } } },
+                                [_vm._v("Another option with object value")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ],
                     1
                   )
