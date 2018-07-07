@@ -41,19 +41,22 @@ export default {
     };
   },
   mounted() {
-    this.id = this.$route.params.id;
-    this.url_edit = "api/productsize/edit/" + this.id;
-    Axios.get(this.url_edit)
-      .then(response => {
-        console.log("response", response.data);
-        this.name = response.data.name;
-        this.dimension = response.data.dimension;
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
+    this.get_item();
   },
   methods: {
+    get_item(){
+      this.id = this.$route.params.id;
+      this.url_edit = "api/productsize/edit/" + this.id;
+      Axios.get(this.url_edit)
+        .then(response => {
+          console.log("response", response.data);
+          this.name = response.data.name;
+          this.dimension = response.data.dimension;
+        })
+        .catch(function(error) {
+          console.error(error);
+      });
+    },
     edit(id) {
       swal({
         title: "Are you sure?",

@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('local/{filename}', ['uses' => 'ApiLocalController@getInfo']);
 
-
 Route::group(['as' => 'role.', 'prefix' => 'role'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'RoleController@getList']);
     Route::get('create', ['as' => 'create', 'uses' => 'RoleController@getCreate']);
@@ -27,6 +26,15 @@ Route::group(['as' => 'role.', 'prefix' => 'role'], function () {
     Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'RoleController@getEdit']);
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'RoleController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'RoleController@postDelete']);
+});
+
+Route::group(['as' => 'permission.', 'prefix' => 'permission'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'PermissionController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'PermissionController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'PermissionController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'PermissionController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'PermissionController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'PermissionController@postDelete']);
 });
 
 Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
@@ -38,11 +46,13 @@ Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
     Route::post('delete', ['as' => 'delete', 'uses' => 'ProductSizeController@postDelete']);
 });
 
+
 Route::group(['as' => 'role.', 'prefix' => 'category'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'CategoryController@getList']);
-    Route::get('create', ['as' => 'create', 'uses' => 'CategoryController@getCreate']);
     Route::post('create', ['as' => 'create', 'uses' => 'CategoryController@postCreate']);
+    Route::get('list_parent_option', ['as' => 'list_parent_option', 'uses' => 'CategoryController@getListParentOption']);
     Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'CategoryController@getEdit']);
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'CategoryController@postEdit']);
+    Route::get('sort_parent_option/{id}', ['as' => 'sort_parent_option', 'uses' => 'CategoryController@getSortParentOption']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'CategoryController@postDelete']);
 });

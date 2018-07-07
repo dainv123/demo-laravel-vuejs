@@ -28,29 +28,23 @@ class CategoryController extends Controller
         return $datas;
     }
     
-    public function getCreate(){
+    public function getListParentOption(){ 
         $datas = Category::select('id', 'name', 'parent_id')->orderBy('id','ASC')->get()->toArray();
-        return Datatables::of($datas)
-            ->addColumn('value', function ($data) {
-                return $data['id'];
-            })
-            ->addColumn('text', function ($data) {
-                return $data['name'];
-            })
-            ->removeColumn('id')
-            ->removeColumn('name')
-            // ->removeColumn('parent_id')
-            ->rawColumns(['value'])
-            ->make(true);
-            $demo = new Category();
-        return $datas;
+        return cate_parent($datas,0,'',0);
     }
 
     public function postCreate(Request $request){
+        if($request->get('order') < 0) 
+            return response()->json([
+                'status' => false
+            ]);
+
         $datas = new Category();
         $data = [
             'name' => $request->get('name'),
-            'dimension' => $request->get('dimension'),
+            'alias' => changeTitle($request->get('name')),
+            'order' => $request->get('order'),
+            'parent_id' => $request->get('parent_id'),
         ];
         $dataCreated = Category::create($data);
         if ($dataCreated->id)
@@ -64,11 +58,26 @@ class CategoryController extends Controller
     }
 
     public function getEdit($id){
-        $datas = Category::find($id);
-        return $datas;
+        $datas = Category::select('id', 'name', 'order', 'parent_id')->where('id', $id)->first();
+        return [
+            'id' => $datas['id'], 
+            'name' => $datas['name'], 
+            'order' => $datas['order'], 
+        ];
+    }
+
+    public function getSortParentOption($id){
+        $datas = Category::select('id', 'name', 'order', 'parent_id')->where('id', $id)->first();
+        $datas_full = Category::select('id', 'name', 'parent_id')->orderBy('id','ASC')->get()->toArray();
+        return cate_parent($datas_full, 0,'',$datas['parent_id']);
     }
 
     public function postEdit(Request $request){
+        if($request->get('id') == $request->get('parent_id') || $request->get('order') < 0) 
+            return response()->json([
+                'status' => false
+            ]);
+
         $data = Category::where([
             'id' => $request->get('id'),
         ])->first();
@@ -76,7 +85,9 @@ class CategoryController extends Controller
         if ($data) {
             $dataEdit = [
                 'name' => $request->get('name'),
-                'dimension' => $request->get('dimension'),
+                'alias' => changeTitle($request->get('name')),
+                'order' => $request->get('order'),
+                'parent_id' => $request->get('parent_id'),
             ];
             $data->update($dataEdit);
             return response()->json([

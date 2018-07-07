@@ -21,19 +21,12 @@
                 </b-form-group>
                 <b-form-group>
                     <b-input-group>
-                          <b-form-select v-model="parent.selected">
-                          <option :value="null">Please select an option</option>
-                          <option value="a">Option A</option>
-                          <option value="b" disabled>Option B (disabled)</option>
-                          <optgroup label="Grouped Options">
-                            <option :value="{'C':'3PO'}">Option with object value</option>
-                            <option :value="{'R':'2D2'}">Another option with object value</option>
-                          </optgroup>
+                        <b-form-select v-model="selected" v-html="options">
                         </b-form-select>
                     </b-input-group>
                 </b-form-group>
                 <div class="form-group form-actions">
-                    <b-link class="btn btn-danger" :to="{ name: 'Create Category'}">Cancel</b-link>
+                    <b-link class="btn btn-danger" :to="{ name: 'List Category'}">Cancel</b-link>
                     <b-button type="submit" variant="primary" @click="create">Create</b-button>
                 </div>
             </b-card>
@@ -49,27 +42,23 @@ export default {
     return {
       name: "",
       order: "",
-      parent: {
-        selected: 0,
-        options: [
-        ]
-      }
+      selected: 0,
+      options: ''
     };
   },
   mounted() {
-    this.get_list();
+    this.get_list_parent();
   },
   methods: {
-    get_list() {
-        this.url = "api/category/create";
-        Axios.get(this.url)
-          .then(response => {
-            response.data.data.unshift({ value: 0, text: 'Please select an option, Default: None.' });
-            this.parent.options = response.data.data;
-          })
-          .catch(function(error) {
-            console.error(error);
-        });
+    get_list_parent() {
+      this.url = "api/category/list_parent_option";
+      Axios.get(this.url)
+        .then(response => {
+          this.options = '<option value="0">Please select an option, Default: None.</option>'+response.data;
+        })
+        .catch(function(error) {
+          console.error(error);
+      });
     },
     create() {
       swal({
@@ -80,7 +69,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          var data_create = { name: this.name, order: this.order };
+          var data_create = { name: this.name, order: this.order, parent_id: this.selected };
           var url_create = "api/category/create";
           this.$validator.validateAll().then(result => {
             if (result) {

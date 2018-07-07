@@ -10,6 +10,9 @@ import Dashboard from '../views/Dashboard/Dashboard'
 import RoleList from '../views/Role/list'
 import RoleEdit from '../views/Role/edit'
 import RoleCreate from '../views/Role/create'
+import PermissionList from '../views/Permission/list'
+import PermissionEdit from '../views/Permission/edit'
+import PermissionCreate from '../views/Permission/create'
 import ProductSizeList from '../views/ProductSize/list'
 import ProductSizeEdit from '../views/ProductSize/edit'
 import ProductSizeCreate from '../views/ProductSize/create'
@@ -55,6 +58,29 @@ export default new Router({
               path: 'create',
               name: 'Create Role',
               component: RoleCreate
+            },
+          ]
+        },
+        {
+          path: 'permission',
+          redirect: 'permission/list',
+          name: 'Permission',
+          component: Wrapper,
+          children: [
+            {
+              path: 'list',
+              name: 'List Permission',
+              component: PermissionList
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit Permission',
+              component: PermissionEdit
+            },
+            {
+              path: 'create',
+              name: 'Create Permission',
+              component: PermissionCreate
             },
           ]
         },
