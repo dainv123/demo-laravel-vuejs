@@ -17,7 +17,7 @@
           :line-numbers="true"
           :pagination-options="{ enabled: true, perPage: 5}"
           :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
-          styleClass="vgt-table condensed"
+          styleClass="vgt-table table table-hover table-responsive condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
           :search-options="{
             enabled: true,

@@ -11,7 +11,8 @@
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
     <div id="app"></div>
-    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script src="{{ mix('js/main.js') }}"></script>
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
   </body>
 </html>

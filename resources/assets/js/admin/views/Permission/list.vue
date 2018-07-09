@@ -17,7 +17,7 @@
           :line-numbers="true"
           :pagination-options="{ enabled: true, perPage: 5}"
           :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
-          styleClass="vgt-table condensed"
+          styleClass="vgt-table table table-hover table-responsive condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
           :search-options="{
             enabled: true,
@@ -63,7 +63,7 @@ export default {
             enabled: true,
             trigger: "enter"
           }
-          },
+        },
         {
           label: "Created On",
           field: "created_at",
@@ -81,19 +81,19 @@ export default {
     };
   },
   mounted() {
-    this.get_list()
+    this.get_list();
   },
   methods: {
-    get_list(){
+    get_list() {
       this.url = "api/permission";
       Axios.get(this.url)
-      .then(response => {
-        console.log("response", response.data.data);
-        this.rows = response.data.data;
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
+        .then(response => {
+          console.log("response", response.data.data);
+          this.rows = response.data.data;
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
     },
     del(id) {
       swal({
@@ -109,13 +109,10 @@ export default {
           console.log("url", this.url_delete, data_delete);
           Axios.post(this.url_delete, data_delete)
             .then(response => {
-              if (response.data.status == true)
-                {
-                  this.get_list();
-                  swal("Delete Success!", "Delete inpage success!", "success");
-                }
-              else
-                swal("Oops!", "Delete Faild!", "error");
+              if (response.data.status == true) {
+                this.get_list();
+                swal("Delete Success!", "Delete inpage success!", "success");
+              } else swal("Oops!", "Delete Faild!", "error");
             })
             .catch(function(error) {
               swal("Oops!", "Delete Faild!", "error");
