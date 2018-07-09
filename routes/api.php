@@ -37,7 +37,7 @@ Route::group(['as' => 'permission.', 'prefix' => 'permission'], function () {
     Route::post('delete', ['as' => 'delete', 'uses' => 'PermissionController@postDelete']);
 });
 
-Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
+Route::group(['as' => 'productsize.', 'prefix' => 'productsize'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'ProductSizeController@getList']);
     Route::get('create', ['as' => 'create', 'uses' => 'ProductSizeController@getCreate']);
     Route::post('create', ['as' => 'create', 'uses' => 'ProductSizeController@postCreate']);
@@ -47,7 +47,7 @@ Route::group(['as' => 'role.', 'prefix' => 'productsize'], function () {
 });
 
 
-Route::group(['as' => 'role.', 'prefix' => 'category'], function () {
+Route::group(['as' => 'category.', 'prefix' => 'category'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'CategoryController@getList']);
     Route::post('create', ['as' => 'create', 'uses' => 'CategoryController@postCreate']);
     Route::get('list_parent_option', ['as' => 'list_parent_option', 'uses' => 'CategoryController@getListParentOption']);
@@ -55,4 +55,13 @@ Route::group(['as' => 'role.', 'prefix' => 'category'], function () {
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'CategoryController@postEdit']);
     Route::get('sort_parent_option/{id}', ['as' => 'sort_parent_option', 'uses' => 'CategoryController@getSortParentOption']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'CategoryController@postDelete']);
+});
+
+Route::group(['as' =>  'user.', 'prefix' => 'user'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'UserController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'UserController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'UserController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'UserController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'UserController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'UserController@postDelete']);
 });

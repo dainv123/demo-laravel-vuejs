@@ -19,6 +19,9 @@ import ProductSizeCreate from '../views/ProductSize/create'
 import CategoryList from '../views/Category/list'
 import CategoryEdit from '../views/Category/edit'
 import CategoryCreate from '../views/Category/create'
+import UserList from '../views/User/list'
+import UserEdit from '../views/User/edit'
+import UserCreate from '../views/User/create'
 
 Vue.use(Router)
 
@@ -127,6 +130,29 @@ export default new Router({
               path: 'create',
               name: 'Create Category',
               component: CategoryCreate
+            },
+          ]
+        },
+        {
+          path: 'user',
+          redirect: 'user/list',
+          name: 'User',
+          component: Wrapper,
+          children: [
+            {
+              path: 'list',
+              name: 'List User',
+              component: UserList
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit User',
+              component: UserEdit
+            },
+            {
+              path: 'create',
+              name: 'Create User',
+              component: UserCreate
             },
           ]
         }
