@@ -3,6 +3,7 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
+          <i class="fa fa-opencart" />
           List Permission
           <b-link class="float-right btn btn-primary" :to="{ name: 'Create Permission'}">Create</b-link>
         </div>

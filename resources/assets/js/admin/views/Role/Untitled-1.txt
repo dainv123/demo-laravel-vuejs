@@ -4,11 +4,11 @@
       <b-card>
         <div slot="header">
           <i class="fa fa-opencart" />
-          List Product Size
-          <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
+          List Role
+          <b-link class="float-right btn btn-primary" :to="{ name: 'Create Role'}">Create</b-link>
         </div>
         <vue-good-table
-          ref="product_size_table"
+          ref="role_table"
           @on-column-filter="onColumnFilter"
           @on-row-click="onColumnFilter"
           @on-sort-change="onSortChange"
@@ -16,7 +16,7 @@
           :rows="rows"
           theme="black-rhino"
           :line-numbers="true"
-          :pagination-options="{ enabled: true, perPage: 5}"
+          :pagination-options="{ enabled: true, perPage: 5, nextLabel: 'next', prevLabel: 'prev'}"
           :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
           styleClass="vgt-table table table-hover table-responsive condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
@@ -43,23 +43,15 @@ import Axios from "axios";
 
 export default {
   props: [],
-  name: "product-size-list",
+  name: "role-list",
   data() {
     return {
       url: "",
       url_delete: "",
       columns: [
         {
-          label: "Name",
-          field: "name",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Dimension",
-          field: "dimension",
+          label: "Title",
+          field: "title",
           filterOptions: {
             enabled: true,
             trigger: "enter"
@@ -86,7 +78,7 @@ export default {
   },
   methods: {
     get_list() {
-      this.url = "api/productsize";
+      this.url = "api/role";
       Axios.get(this.url)
         .then(response => {
           console.log("response", response.data.data);
@@ -106,7 +98,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_delete = { id: id };
-          this.url_delete = "api/productsize/delete";
+          this.url_delete = "api/role/delete";
           console.log("url", this.url_delete, data_delete);
           Axios.post(this.url_delete, data_delete)
             .then(response => {

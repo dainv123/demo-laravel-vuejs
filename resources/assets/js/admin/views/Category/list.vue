@@ -3,6 +3,7 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
+          <i class="fa fa-opencart" />
           List Category
           <b-link class="float-right btn btn-primary" :to="'create'">Create</b-link>
         </div>

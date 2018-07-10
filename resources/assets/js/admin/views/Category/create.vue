@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
+              <i class="fa fa-opencart" />
                 Create Category
             </div>
                 <b-form-group>
@@ -43,7 +44,7 @@ export default {
       name: "",
       order: "",
       selected: 0,
-      options: ''
+      options: ""
     };
   },
   mounted() {
@@ -54,11 +55,13 @@ export default {
       this.url = "api/category/list_parent_option";
       Axios.get(this.url)
         .then(response => {
-          this.options = '<option value="0">Please select an option, Default: None.</option>'+response.data;
+          this.options =
+            '<option value="0">Please select an option, Default: None.</option>' +
+            response.data;
         })
         .catch(function(error) {
           console.error(error);
-      });
+        });
     },
     create() {
       swal({
@@ -69,7 +72,11 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          var data_create = { name: this.name, order: this.order, parent_id: this.selected };
+          var data_create = {
+            name: this.name,
+            order: this.order,
+            parent_id: this.selected
+          };
           var url_create = "api/category/create";
           this.$validator.validateAll().then(result => {
             if (result) {

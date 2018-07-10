@@ -3,6 +3,7 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
+          <i class="fa fa-opencart" />
             Example Form
         </div>
         <vue-good-table

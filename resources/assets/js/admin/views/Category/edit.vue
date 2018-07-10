@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
+              <i class="fa fa-opencart" />
                 Edit Category
             </div>
                 <b-form-group>
@@ -44,7 +45,7 @@ export default {
       name: "",
       order: "",
       selected: 0,
-      options: ''
+      options: ""
     };
   },
   mounted() {
@@ -52,27 +53,30 @@ export default {
     this.get_list_sort_parent();
   },
   methods: {
-    get_item(){
-        this.id = this.$route.params.id;
-        this.url_edit = "api/category/edit/" + this.id;
-        Axios.get(this.url_edit)
-          .then(response => {
-            // console.log("response",response.data);
-            this.name = response.data.name;
-            this.order = response.data.order;
-          })
-          .catch(function(error) {
-            console.error(error);
+    get_item() {
+      this.id = this.$route.params.id;
+      this.url_edit = "api/category/edit/" + this.id;
+      Axios.get(this.url_edit)
+        .then(response => {
+          // console.log("response",response.data);
+          this.name = response.data.name;
+          this.order = response.data.order;
+        })
+        .catch(function(error) {
+          console.error(error);
         });
     },
-    get_list_sort_parent(){
-        this.url_sort_parent_option = "api/category/sort_parent_option/" + this.id;
-        Axios.get(this.url_sort_parent_option)
-            .then(response => {
-                this.options = '<option value="0">Please select an option, Default: None.</option>'+response.data;
-            })
-            .catch(function(error) {
-              console.error(error);
+    get_list_sort_parent() {
+      this.url_sort_parent_option =
+        "api/category/sort_parent_option/" + this.id;
+      Axios.get(this.url_sort_parent_option)
+        .then(response => {
+          this.options =
+            '<option value="0">Please select an option, Default: None.</option>' +
+            response.data;
+        })
+        .catch(function(error) {
+          console.error(error);
         });
     },
     edit(id) {
@@ -96,7 +100,7 @@ export default {
               Axios.post(url_edit, data_edit)
                 .then(response => {
                   if (response.data.status == true) {
-                    this.$router.push({ name: 'List Category'});
+                    this.$router.push({ name: "List Category" });
                     swal("Edit Success!", "Edit success!", "success");
                   } else swal("Oops!", "Edit Faild!", "error");
                 })

@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
                 <div slot="header">
+                    <i class="fa fa-opencart" />
                     Create User 
                 </div>
                 <b-form-group>

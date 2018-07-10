@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
+              <i class="fa fa-opencart" />
                 Create Role
             </div>
                 <b-form-group>
@@ -47,7 +48,7 @@ export default {
               Axios.post(url_create, data_create)
                 .then(response => {
                   if (response.data.status == true) {
-                    this.$router.push({ name: 'List Role'});
+                    this.$router.push({ name: "List Role" });
                     swal("Create Success!", "Create success!", "success");
                   } else swal("Oops!", "Create Faild!", "error");
                 })

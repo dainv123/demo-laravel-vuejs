@@ -20153,8 +20153,7 @@ hr.transparent {
 .show-list-item .vgt-input {
   top: 7px;
   right: 1.25rem;
-  height: 30px;
-  padding: 5px 10px;
+  padding: 9px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
@@ -20180,7 +20179,7 @@ hr.transparent {
 }
 
 .show-list-item .vgt-table thead tr:first-child {
-  background: #18bfa1bd;
+  background: #20a8d8;
   color: #fff;
   cursor: pointer;
 }
@@ -20225,14 +20224,13 @@ hr.transparent {
 
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:first-child:hover,
 .show-list-item .footer__navigation.vgt-pull-right a.footer__navigation__page-btn:last-child:hover {
-  background: #18bfa1bd;
+  background: #20a8d8;
   color: #fff;
-  border-color: #18bfa1bd;
+  border-color: #20a8d8;
 }
 
 .show-list-item .footer__row-count__select {
-  height: 30px;
-  padding: 5px 10px;
+  padding: 7px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;

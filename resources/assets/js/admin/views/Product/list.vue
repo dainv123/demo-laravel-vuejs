@@ -3,6 +3,7 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
+          <i class="fa fa-opencart" />
           List Product
           <b-link class="float-right btn btn-primary" :to="{ name: 'Create Product'}">Create</b-link>
         </div>
@@ -71,40 +72,8 @@ export default {
           }
         },
         {
-          label: "Old Price",
-          field: "oldprice",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Intro",
-          field: "intro",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Content",
-          field: "content",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
           label: "Image",
           field: "image",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Hover Image",
-          field: "hoverimage",
           filterOptions: {
             enabled: true,
             trigger: "enter"
@@ -120,7 +89,7 @@ export default {
         },
         {
           label: "Description",
-          field: "intro",
+          field: "description",
           filterOptions: {
             enabled: true,
             trigger: "enter"

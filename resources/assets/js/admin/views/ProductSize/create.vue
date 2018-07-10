@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
+              <i class="fa fa-opencart" />
                 Create Product Size
             </div>
                 <b-form-group>
@@ -38,8 +39,7 @@ export default {
       dimension: ""
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     create() {
       swal({

@@ -22,6 +22,9 @@ import CategoryCreate from '../views/Category/create'
 import UserList from '../views/User/list'
 import UserEdit from '../views/User/edit'
 import UserCreate from '../views/User/create'
+import ProductList from '../views/Product/list'
+import ProductEdit from '../views/Product/edit'
+import ProductCreate from '../views/Product/create'
 
 Vue.use(Router)
 
@@ -153,6 +156,29 @@ export default new Router({
               path: 'create',
               name: 'Create User',
               component: UserCreate
+            },
+          ]
+        },
+        {
+          path: 'product',
+          redirect: 'product/list',
+          name: 'Product',
+          component: Wrapper,
+          children: [
+            {
+              path: 'list',
+              name: 'List Product',
+              component: ProductList
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit Product',
+              component: ProductEdit
+            },
+            {
+              path: 'create',
+              name: 'Create Product',
+              component: ProductCreate
             },
           ]
         }

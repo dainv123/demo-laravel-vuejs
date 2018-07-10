@@ -3,6 +3,7 @@
         <b-col sm="12">
             <b-card>
             <div slot="header">
+              <i class="fa fa-opencart" />
                 Edit Permission
             </div>
                 <b-form-group>
@@ -36,7 +37,7 @@ export default {
     return {
       id: 0,
       title: "",
-      name:"",
+      name: "",
       url_edit: ""
     };
   },
@@ -44,18 +45,18 @@ export default {
     this.get_item();
   },
   methods: {
-    get_item(){
+    get_item() {
       this.id = this.$route.params.id;
       this.url_edit = "api/permission/edit/" + this.id;
       Axios.get(this.url_edit)
-      .then(response => {
+        .then(response => {
           console.log("response", response.data);
           this.title = response.data.title;
           this.name = response.data.name;
-      })
-      .catch(function(error) {
+        })
+        .catch(function(error) {
           console.error(error);
-      });
+        });
     },
     edit(id) {
       swal({
@@ -66,12 +67,12 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          var data_edit = { id: id, title: this.title, name: this.name  };
+          var data_edit = { id: id, title: this.title, name: this.name };
           var url_edit = "api/permission/edit/" + id;
           Axios.post(url_edit, data_edit)
             .then(response => {
               if (response.data.status == true) {
-                this.$router.push({ name: 'List Permission'});
+                this.$router.push({ name: "List Permission" });
                 swal("Edit Success!", "Edit success!", "success");
               } else swal("Oops!", "Edit Faild!", "error");
             })

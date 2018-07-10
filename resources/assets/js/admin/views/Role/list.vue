@@ -3,35 +3,34 @@
     <b-col sm="12">
       <b-card>
         <div slot="header">
+          <i class="fa fa-opencart" />
           List Role
           <b-link class="float-right btn btn-primary" :to="{ name: 'Create Role'}">Create</b-link>
         </div>
-        <vue-good-table
-          ref="role_table"
-          @on-column-filter="onColumnFilter"
-          @on-row-click="onColumnFilter"
-          @on-sort-change="onSortChange"
-          :columns="columns"
-          :rows="rows"
-          theme="black-rhino"
-          :line-numbers="true"
-          :pagination-options="{ enabled: true, perPage: 5, nextLabel: 'next', prevLabel: 'prev'}"
-          :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
-          styleClass="vgt-table table table-hover table-responsive condensed"
-          :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
-          :search-options="{
-            enabled: true,
-          }">
-          <template slot="table-row" slot-scope="props">
-            <span v-if="props.column.field == 'action'">
-              <b-link class="btn btn-warning" :to="'edit/'+props.row.action"><i class="fa fa-pencil"></i></b-link>&nbsp;
-              <button type="submit" class="btn btn-danger" @click="del(props.row.action)"><i class="fa fa-trash"></i></button>
-            </span>
-            <span v-else>
-              {{props.formattedRow[props.column.field]}}
-            </span>
-          </template>
-        </vue-good-table>
+        <vuetable ref="vuetable"
+          api-url="https://vuetable.ratiw.net/api/users"
+          :fields="fields"
+          :sort-order="sortOrder"
+          :css="css.table"
+          pagination-path=""
+          :per-page="3"
+          @vuetable:pagination-data="onPaginationData"
+          @vuetable:loading="onLoading"        
+          @vuetable:loaded="onLoaded"
+        >
+          <template slot="actions" slot-scope="props">
+            <div class="table-button-container">
+                <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
+                  <span class="glyphicon glyphicon-pencil"></span> Edit</button>&nbsp;&nbsp;
+                <button class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">
+                  <span class="glyphicon glyphicon-trash"></span> Delete</button>&nbsp;&nbsp;
+            </div>
+            </template>
+          </vuetable>
+          <vuetable-pagination ref="pagination"
+            :css="css.pagination"
+            @vuetable-pagination:change-page="onChangePage"
+          ></vuetable-pagination>
       </b-card>
     </b-col>
   </div>
@@ -39,150 +38,85 @@
 
 <script>
 import Axios from "axios";
+import {
+  Vuetable,
+  VuetablePagination,
+  VuetablePaginationInfo
+} from "vuetable-2";
 
 export default {
-  props: [],
   name: "role-list",
+  components: {
+    "vuetable-pagination": VuetablePagination,
+    vuetable: Vuetable
+  },
   data() {
     return {
-      url: "",
-      url_delete: "",
-      columns: [
+      fields: [
         {
-          label: "Title",
-          field: "title",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
+          name: "name",
+          title:
+            '<span class="orange glyphicon glyphicon-user"></span> Full Name',
+          sortField: "name"
         },
         {
-          label: "Created On",
-          field: "created_at",
-          type: "date",
-          dateInputFormat: "YYYY-MM-DD",
-          dateOutputFormat: "LLL"
+          name: "email",
+          title: "Email",
+          sortField: "email"
         },
+        "birthdate",
+        "nickname",
         {
-          label: "Action",
-          field: "action",
-          html: true
-        }
+          name: "gender",
+          title: "Gender",
+          sortField: "gender"
+        },
+        "__slot:actions"
       ],
-      rows: []
+      sortOrder: [{ field: "name", direction: "asc" }],
+      css: {
+        table: {
+          tableClass: "table table-striped table-bordered table-hovered",
+          loadingClass: "loading",
+          ascendingIcon: "glyphicon glyphicon-chevron-up",
+          descendingIcon: "glyphicon glyphicon-chevron-down",
+          handleIcon: "glyphicon glyphicon-menu-hamburger"
+        },
+        pagination: {
+          infoClass: "pull-left",
+          wrapperClass: "vuetable-pagination pull-right",
+          activeClass: "btn-primary",
+          disabledClass: "disabled",
+          pageClass: "btn btn-border",
+          linkClass: "btn btn-border",
+          icons: {
+            first: "",
+            prev: "",
+            next: "",
+            last: ""
+          }
+        }
+      }
     };
   },
-  mounted() {
-    this.get_list();
-  },
   methods: {
-    get_list() {
-      this.url = "api/role";
-      Axios.get(this.url)
-        .then(response => {
-          console.log("response", response.data.data);
-          this.rows = response.data.data;
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
+    onPaginationData(paginationData) {
+      this.$refs.pagination.setPaginationData(paginationData);
     },
-    del(id) {
-      swal({
-        title: "Are you sure?",
-        text: "Are you delete",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then(willDelete => {
-        if (willDelete) {
-          var data_delete = { id: id };
-          this.url_delete = "api/role/delete";
-          console.log("url", this.url_delete, data_delete);
-          Axios.post(this.url_delete, data_delete)
-            .then(response => {
-              if (response.data.status == true) {
-                this.get_list();
-                swal("Delete Success!", "Delete inpage success!", "success");
-              } else swal("Oops!", "Delete Faild!", "error");
-            })
-            .catch(function(error) {
-              swal("Oops!", "Delete Faild!", "error");
-              e.preventDefault();
-              console.error(error);
-            });
-        }
-      });
+    onChangePage(page) {
+      this.$refs.vuetable.changePage(page);
     },
-    toggleSelectRow(params) {
-      console.log(params.row, params.pageIndex, params.selected);
+    editRow(rowData) {
+      alert("You clicked edit on" + JSON.stringify(rowData));
     },
-    selectCell(params) {
-      console.log("select cell called");
-      console.log(params);
+    deleteRow(rowData) {
+      alert("You clicked delete on" + JSON.stringify(rowData));
     },
-    searchedRow(params) {
-      console.log(params);
+    onLoading() {
+      console.log("loading... show your spinner here");
     },
-    autofilter(type) {
-      if (type === "title") {
-        this.columns[0].filterOptions.filterValue = "John";
-      }
-      if (type === "reset") {
-        this.columns[0].filterOptions.filterValue = "";
-        this.columns[1].filterOptions.filterValue = "";
-        // this.columns[1].filterOptions.filterValue = null;
-      }
-    },
-
-    sortFn(x, y, col) {
-      if (x < y) {
-        return -1;
-      }
-      if (x > y) {
-        return 1;
-      }
-      return 0;
-    },
-    formatAge(value) {
-      return `lala${value}lala`;
-    },
-    addFilter() {
-      this.$set(this.columns[2], "filterValue", "Jane");
-      console.log(this.columns);
-    },
-
-    onPerPageChange(evt) {
-      // { currentPage: 1, currentPerPage: 10, total: 5 }
-      console.log("per-page-changed:");
-      console.log(evt);
-    },
-
-    onPageChange(evt) {
-      // { currentPage: 1, currentPerPage: 10, total: 5 }
-      console.log("page-changed:");
-      console.log(evt);
-    },
-
-    onColumnFilter(params) {
-      // { currentPage: 1, currentPerPage: 10, total: 5 }
-      console.log("on-column-filters:");
-      console.log(params);
-    },
-
-    onSearch(params) {
-      console.log("on-search:");
-      console.log(params);
-    },
-
-    onSortChange(params) {
-      console.log("on-sort-change:");
-      console.log(params);
-    },
-
-    onRowClick(params) {
-      console.log("on-row-click");
-      console.log(params);
+    onLoaded() {
+      console.log("loaded! .. hide your spinner here");
     }
   }
 };

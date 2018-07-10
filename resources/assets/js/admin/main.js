@@ -11,8 +11,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueGoodTable from 'vue-good-table'
 import VeeValidate from 'vee-validate';
+import Vuetable from 'vuetable-2';
 
-Vue.use(VeeValidate)
+Vue.use(VeeValidate, { fieldsBagName: 'formFields' })
+Vue.use(Vuetable)
 Vue.use(VueGoodTable)
 Vue.use(BootstrapVue)
 
