@@ -51,7 +51,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_create = { name: this.name, dimension: this.dimension };
-          var url_create = "api/productsize/create";
+          var url_create = "/api/productsize/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)

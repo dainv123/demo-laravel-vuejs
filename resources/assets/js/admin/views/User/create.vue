@@ -51,12 +51,14 @@
                         <b-input-group>
                             <b-form-select v-model="role.selected" v-html="role.options">
                             </b-form-select>
+                            <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                     <b-form-group class="col-sm-4">
                         <b-input-group>
-                          <b-form-select v-model="sex.selected" :options="sex.options">
-                          </b-form-select>
+                            <b-form-select v-model="sex.selected" :options="sex.options">
+                            </b-form-select>
+                            <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                     <b-form-group class="col-sm-4">
@@ -117,7 +119,7 @@ export default {
   },
   methods: {
     get_list_parent() {
-      this.url = "api/role/";
+      this.url = "/api/role/";
       Axios.get(this.url)
         .then(response => {
           this.role.options = '<option value="3">Role, Default: User.</option>';
@@ -150,7 +152,7 @@ export default {
             status: this.status.selected,
             subscribe: this.subscribe.selected
           };
-          var url_create = "api/user/create";
+          var url_create = "/api/user/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)

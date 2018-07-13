@@ -24,6 +24,7 @@
                     <b-input-group>
                         <b-form-select v-model="selected" v-html="options">
                         </b-form-select>
+                        <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                     </b-input-group>
                 </b-form-group>
                 <div class="form-group form-actions">
@@ -43,7 +44,7 @@ export default {
     return {
       name: "",
       order: "",
-      selected: 0,
+      selected: "",
       options: ""
     };
   },
@@ -52,11 +53,11 @@ export default {
   },
   methods: {
     get_list_parent() {
-      this.url = "api/category/list_parent_option";
+      this.url = "/api/category/list_parent_option";
       Axios.get(this.url)
         .then(response => {
           this.options =
-            '<option value="0">Please select an option, Default: None.</option>' +
+            '<option value="" disabled selected>Category Parent</option>' +
             response.data;
         })
         .catch(function(error) {
@@ -77,7 +78,7 @@ export default {
             order: this.order,
             parent_id: this.selected
           };
-          var url_create = "api/category/create";
+          var url_create = "/api/category/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)

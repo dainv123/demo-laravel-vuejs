@@ -35,12 +35,14 @@
                         <b-input-group>
                             <b-form-select v-model="role.selected" v-html="role.options">
                             </b-form-select>
+                            <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                     <b-form-group class="col-sm-4">
                         <b-input-group>
-                          <b-form-select v-model="sex.selected" :options="sex.options">
-                          </b-form-select>
+                            <b-form-select v-model="sex.selected" :options="sex.options">
+                            </b-form-select>
+                            <b-input-group-append><b-input-group-text><i class="fa fa-info"></i></b-input-group-text></b-input-group-append>
                         </b-input-group>
                     </b-form-group>
                     <b-form-group class="col-sm-4">
@@ -99,7 +101,7 @@ export default {
   },
   methods: {
     get_list_role(id) {
-        this.url = "api/role/";
+        this.url = "/api/role/";
         Axios.get(this.url)
           .then(response => {
             this.role.options = '';
@@ -116,7 +118,7 @@ export default {
       },
     get_item(){
         this.id = this.$route.params.id;
-        this.url_edit = "api/user/edit/" + this.id;
+        this.url_edit = "/api/user/edit/" + this.id;
         Axios.get(this.url_edit)
           .then(response => {
             console.log("response", response.data);
@@ -157,7 +159,7 @@ export default {
             status: this.status.selected,
             subscribe: this.subscribe.selected
           };
-          var url_edit = "api/user/edit/" + id;
+          var url_edit = "/api/user/edit/" + id;
           Axios.post(url_edit, data_edit)
             .then(response => {
               if (response.data.status == true) {

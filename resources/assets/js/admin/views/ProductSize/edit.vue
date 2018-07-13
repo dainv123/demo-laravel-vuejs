@@ -47,7 +47,7 @@ export default {
   methods: {
     get_item(){
       this.id = this.$route.params.id;
-      this.url_edit = "api/productsize/edit/" + this.id;
+      this.url_edit = "/api/productsize/edit/" + this.id;
       Axios.get(this.url_edit)
         .then(response => {
           console.log("response", response.data);
@@ -72,7 +72,7 @@ export default {
             name: this.name,
             dimension: this.dimension
           };
-          var url_edit = "api/productsize/edit/" + id;
+          var url_edit = "/api/productsize/edit/" + id;
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_edit, data_edit)

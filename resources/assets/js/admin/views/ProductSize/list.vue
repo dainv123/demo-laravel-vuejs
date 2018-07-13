@@ -18,17 +18,17 @@
           :line-numbers="true"
           :pagination-options="{ enabled: true, perPage: 5}"
           :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
-          styleClass="vgt-table table table-hover table-responsive condensed"
+          styleClass="vgt-table condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
           :search-options="{
             enabled: true,
           }">
           <template slot="table-row" slot-scope="props">
-            <span v-if="props.column.field == 'action'">
-              <b-link class="btn btn-warning" :to="'edit/'+props.row.action"><i class="fa fa-pencil"></i></b-link>&nbsp;
+            <span v-if="props.column.field == 'action'" data-label="Action">
+              <button type="submit" class="btn btn-warning" @click="edit(props.row.action)"><i class="fa fa-pencil"></i></button>&nbsp;
               <button type="submit" class="btn btn-danger" @click="del(props.row.action)"><i class="fa fa-trash"></i></button>
             </span>
-            <span v-else>
+            <span v-else :data-label="props.column.label">
               {{props.formattedRow[props.column.field]}}
             </span>
           </template>
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     get_list() {
-      this.url = "api/productsize";
+      this.url = "/api/productsize";
       Axios.get(this.url)
         .then(response => {
           console.log("response", response.data.data);
@@ -95,6 +95,9 @@ export default {
         .catch(function(error) {
           console.error(error);
         });
+    },
+    edit(id){
+      this.$router.push({ name: 'Edit Size', params: { id: id } });
     },
     del(id) {
       swal({
@@ -106,7 +109,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_delete = { id: id };
-          this.url_delete = "api/productsize/delete";
+          this.url_delete = "/api/productsize/delete";
           console.log("url", this.url_delete, data_delete);
           Axios.post(this.url_delete, data_delete)
             .then(response => {

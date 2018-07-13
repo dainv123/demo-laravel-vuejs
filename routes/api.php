@@ -65,3 +65,12 @@ Route::group(['as' =>  'user.', 'prefix' => 'user'], function () {
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'UserController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'UserController@postDelete']);
 });
+
+Route::group(['as' => 'product.', 'prefix' => 'product'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'ProductController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'ProductController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'ProductController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'ProductController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'ProductController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'ProductController@postDelete']);
+});

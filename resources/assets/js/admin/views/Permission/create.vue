@@ -50,7 +50,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_create = { title: this.title, name: this.name };
-          var url_create = "api/permission/create";
+          var url_create = "/api/permission/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)

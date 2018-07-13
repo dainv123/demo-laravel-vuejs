@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
-    this.url_edit = "api/role/edit/" + this.id;
+    this.url_edit = "/api/role/edit/" + this.id;
     Axios.get(this.url_edit)
       .then(response => {
         console.log("response", response.data);
@@ -56,7 +56,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_edit = { id: id, title: this.title };
-          var url_edit = "api/role/edit/" + id;
+          var url_edit = "/api/role/edit/" + id;
           Axios.post(url_edit, data_edit)
             .then(response => {
               if (response.data.status == true) {

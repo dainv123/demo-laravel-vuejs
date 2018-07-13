@@ -42,7 +42,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_create = { title: this.title };
-          var url_create = "api/role/create";
+          var url_create = "/api/role/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)

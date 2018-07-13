@@ -47,7 +47,7 @@ export default {
   methods: {
     get_item() {
       this.id = this.$route.params.id;
-      this.url_edit = "api/permission/edit/" + this.id;
+      this.url_edit = "/api/permission/edit/" + this.id;
       Axios.get(this.url_edit)
         .then(response => {
           console.log("response", response.data);
@@ -68,7 +68,7 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_edit = { id: id, title: this.title, name: this.name };
-          var url_edit = "api/permission/edit/" + id;
+          var url_edit = "/api/permission/edit/" + id;
           Axios.post(url_edit, data_edit)
             .then(response => {
               if (response.data.status == true) {
