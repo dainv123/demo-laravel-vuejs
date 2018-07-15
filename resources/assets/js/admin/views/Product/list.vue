@@ -34,6 +34,9 @@
             <span v-else-if="(props.column.field == 'status' && props.row.status == 'inactive') || (props.column.field == 'subscribe' && props.row.subscribe == 'inactive')" :data-label="props.column.label">
               <span class="badge badge-danger">{{props.row.status}}</span>
             </span>
+            <span v-else-if="(props.column.field == 'image')" :data-label="props.column.label">
+              <img class="img-list" :src="'/images/'+props.row.image" alt="img">
+            </span>
             <span v-else :data-label="props.column.label">
               {{props.formattedRow[props.column.field]}}
             </span>
@@ -104,22 +107,6 @@ export default {
           }
         },
         {
-          label: "Status",
-          field: "status",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Subscribe",
-          field: "subscribe",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
           label: "Created On",
           field: "created_at",
           type: "date",
@@ -150,8 +137,8 @@ export default {
           console.error(error);
         });
     },
-    edit(id){
-      this.$router.push({ name: 'Edit Product', params: { id: id } });
+    edit(id) {
+      this.$router.push({ name: "Edit Product", params: { id: id } });
     },
     del(id) {
       swal({

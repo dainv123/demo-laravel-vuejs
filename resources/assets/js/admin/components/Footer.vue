@@ -6,7 +6,7 @@
 </template>
 <script>
 import Axios from "axios";
-const api_contact = '/api/local/contact';
+const api_contact = "/api/local/contact";
 export default {
   name: "c-footer",
   data: () => ({
@@ -14,8 +14,7 @@ export default {
     year: 2014
   }),
   mounted() {
-    this.getContact(),
-    this.getYear()
+    this.getContact(), this.getYear();
   },
   methods: {
     getContact() {

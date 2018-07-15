@@ -89,7 +89,9 @@ $green-blur: #2a363d9e;
 .show-list-item {
   position: relative;
   padding-top: 30px;
-
+  .img-list{
+    height: 50px;
+  }
   .vgt-input {
     top: 7px;
     right: 1.25rem;
@@ -120,6 +122,9 @@ $green-blur: #2a363d9e;
       background: $green-blur;
       color: #fff;
       cursor: pointer;
+      span{
+        font-weight: 600;
+      }
     }
     // thead tr:last-child {
     //     background: #20c99754;
@@ -228,4 +233,9 @@ $green-blur: #2a363d9e;
       display: none;
     }
   }
+}
+
+.img-edit{
+  height: 55px;
+  padding-right: 5px;
 }

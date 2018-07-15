@@ -36,13 +36,13 @@
                 <div class="row">
                     <b-form-group class="col-sm-6">
                         <b-input-group>
-                            <b-form-file v-model="image" v-on:change="onFileBannerChange" v-validate="'required'" accept=".jpg, .png, .gif" placeholder="Image"></b-form-file>
+                            <b-form-file v-model="image" name="image" v-on:change="onImageChange" v-validate="'required'" accept=".jpg, .png, .gif" placeholder="Image"></b-form-file>
                         </b-input-group>
                         <span style="color: red" v-show="errors.has('image')">{{ errors.first('image') }}</span>
                     </b-form-group>
                     <b-form-group class="col-sm-6">
                         <b-input-group>
-                            <b-form-file v-model="hoverimage" v-validate="'required'" accept=".jpg, .png, .gif" placeholder="Hover Image"></b-form-file>
+                            <b-form-file v-model="hoverimage" name="hoverimage" v-on:change="onImageChange" v-validate="'required'" accept=".jpg, .png, .gif" placeholder="Hover Image"></b-form-file>
                         </b-input-group>
                         <span style="color: red" v-show="errors.has('hoverimage')">{{ errors.first('hoverimage') }}</span>
                     </b-form-group>
@@ -127,7 +127,7 @@ export default {
       avaibility: {
         selected: "",
         options: [
-          {text: "Avaibility", value: "", disabled:true},
+          { text: "Avaibility", value: "", disabled: true },
           { text: "Not available", value: "notavailable" },
           { text: "In stock", value: "instock" }
         ]
@@ -140,13 +140,14 @@ export default {
   mounted() {
     this.get_list_productsize();
     this.get_list_category();
-},
+  },
   methods: {
     get_list_productsize() {
       this.url = "/api/productsize/";
       Axios.get(this.url)
         .then(response => {
-            this.size.options = '<option value="" disabled selected>Size</option>';
+          this.size.options =
+            '<option value="" disabled selected>Size</option>';
           response.data.data.forEach(element => {
             this.size.options =
               this.size.options +
@@ -164,16 +165,17 @@ export default {
     get_list_category() {
       this.url = "/api/category/";
       Axios.get(this.url)
-      .then(response => {
-      this.category.options = '<option value="" disabled selected>Categoty</option>';
-          response.data.data.forEach(element => {
+        .then(response => {
           this.category.options =
-          this.category.options +
-            '<option value="' +
-            element.id +
-            '">' +
-            element.name +
-            "</option>";
+            '<option value="" disabled selected>Categoty</option>';
+          response.data.data.forEach(element => {
+            this.category.options =
+              this.category.options +
+              '<option value="' +
+              element.id +
+              '">' +
+              element.name +
+              "</option>";
           });
         })
         .catch(function(error) {
@@ -181,7 +183,6 @@ export default {
         });
     },
     create() {
-      console.log(this.image)
       swal({
         title: "Are you sure?",
         text: "Are you create",
@@ -190,21 +191,22 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          var data_create = { 
-            name: this.name ,
-            price: this.price ,
-            oldprice: this.oldprice ,
-            keywords: this.keywords ,
-            description: this.description ,
+          var data_create = {
+            name: this.name,
+            price: this.price,
+            oldprice: this.oldprice,
+            keywords: this.keywords,
+            description: this.description,
             image: this.image,
-            hoverimage: this.hoverimage ,
-            content: this.content ,
-            size_id: this.size.selected ,
-            categorie_id: this.category.selected ,
+            hoverimage: this.hoverimage,
+            intro: this.intro,
+            content: this.content,
+            size_id: this.size.selected,
+            categorie_id: this.category.selected,
             avaibility: this.avaibility.selected,
             user_id: 1
-        };
-        var url_create = "/api/product/create";
+          };
+          var url_create = "/api/product/create";
           this.$validator.validateAll().then(result => {
             if (result) {
               Axios.post(url_create, data_create)
@@ -224,18 +226,28 @@ export default {
         }
       });
     },
-    onFileBannerChange(e) {
+    onImageChange(e) {
+      let name = e.target.name;
       let files = e.target.files || e.dataTransfer.files;
-      let formData = new FormData();
-      formData.append("banner", files[0]);
-      console.log('formData',formData);
-      Axios.post("/api/upload/banner", formData)
-          .then(response => {
-          })
-          .catch(function (error) {
-              console.log(error);
-              this.showCreateError();
-          });
+      if (!files.length) return;
+      this.createImage(name, files[0]);
+    },
+    createImage(name, file) {
+      let reader = new FileReader();
+      let vm = this;
+      reader.onload = e => {
+        switch (name) {
+          case "image":
+            vm.image = e.target.result;
+            break;
+          case "hoverimage":
+            vm.hoverimage = e.target.result;
+            break;
+          default:
+            break;
+        }
+      };
+      reader.readAsDataURL(file);
     },
     onEditorBlur(quill) {
       console.log("editor blur!", quill);

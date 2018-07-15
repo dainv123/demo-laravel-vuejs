@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('hoverimage');
             $table->string('keywords');
             $table->string('description');
-            $table->string('availability')->default('In stock');
+            $table->string('avaibility');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('categorie_id')->unsigned();

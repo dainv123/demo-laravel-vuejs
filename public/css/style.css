@@ -90,7 +90,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @-ms-viewport {
@@ -20208,6 +20208,10 @@ hr.transparent {
   padding-top: 30px;
 }
 
+.show-list-item .img-list {
+  height: 50px;
+}
+
 .show-list-item .vgt-input {
   top: 7px;
   right: 1.25rem;
@@ -20239,6 +20243,10 @@ hr.transparent {
   background: #2a363d9e;
   color: #fff;
   cursor: pointer;
+}
+
+.show-list-item .vgt-table thead tr:first-child span {
+  font-weight: 600;
 }
 
 .show-list-item .footer__row-count.vgt-pull-left,
@@ -20351,5 +20359,10 @@ hr.transparent {
   .show-list-item .vgt-table th.line-numbers {
     display: none;
   }
+}
+
+.img-edit {
+  height: 55px;
+  padding-right: 5px;
 }
 

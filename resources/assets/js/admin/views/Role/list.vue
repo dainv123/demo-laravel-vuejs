@@ -16,7 +16,7 @@
           :rows="rows"
           theme="black-rhino"
           :line-numbers="true"
-          :pagination-options="{ enabled: true, perPage: 5, nextLabel: 'next', prevLabel: 'prev'}"
+          :pagination-options="{ enabled: true, perPage: 5}"
           :select-options="{enabled: false, selectOnCheckboxOnly: false,}"
           styleClass="vgt-table condensed"
           :sort-options="{enabled: true, initialSortBy: {field: 'title', type: 'asc'}}"
@@ -88,8 +88,8 @@ export default {
           console.error(error);
         });
     },
-    edit(id){
-      this.$router.push({ name: 'Edit Role', params: { id: id } });
+    edit(id) {
+      this.$router.push({ name: "Edit Role", params: { id: id } });
     },
     del(id) {
       swal({
