@@ -1,5 +1,5 @@
 <template>
-    <div  class="show-list-item">
+    <div  class="show-list-item review">
     <b-card>
         <div slot="header"><i class="fa fa-opencart" /> Review</div>
         <vue-good-table

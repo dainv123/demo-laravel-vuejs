@@ -90,7 +90,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 @-ms-viewport {
@@ -20208,6 +20208,10 @@ hr.transparent {
   padding-top: 30px;
 }
 
+.show-list-item.review {
+  padding-top: 0px;
+}
+
 .show-list-item .img-list {
   height: 50px;
 }
@@ -20364,5 +20368,85 @@ hr.transparent {
 .img-edit {
   height: 55px;
   padding-right: 5px;
+}
+
+.show-list-product-image .image {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.show-list-product-image .image img {
+  width: 100%;
+}
+
+.show-list-product-image .image span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+}
+
+.show-list-product-image .image span .fa {
+  color: #ff5722;
+  font-size: 1.3em;
+}
+
+.show-list-product-image .image span .fa:hover {
+  color: red;
+}
+
+.show-list-product-image .card-header input[type="file"] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.show-list-product-image .card-header .label {
+  border: 2px dashed grey;
+  display: block;
+  -webkit-transition: border 300ms ease;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  background-color: #20a8d8;
+  border-color: #20a8d8;
+  padding: 6px 12px;
+  width: 120px;
+  float: right;
+  margin: 0;
+}
+
+.show-list-product-image .card-header .label input {
+  display: none;
+}
+
+.show-list-product-image .card-header .label i {
+  display: block;
+  font-size: 42px;
+  padding-bottom: 16px;
+}
+
+.show-list-product-image .card-header .label i,
+.show-list-product-image .card-header .label .title {
+  color: #fff;
+  -webkit-transition: 200ms color;
+  transition: 200ms color;
+}
+
+.review {
+  padding-top: 0px;
 }
 

@@ -89,7 +89,10 @@ $green-blur: #2a363d9e;
 .show-list-item {
   position: relative;
   padding-top: 30px;
-  .img-list{
+  &.review {
+    padding-top: 0px;
+  }
+  .img-list {
     height: 50px;
   }
   .vgt-input {
@@ -122,7 +125,7 @@ $green-blur: #2a363d9e;
       background: $green-blur;
       color: #fff;
       cursor: pointer;
-      span{
+      span {
         font-weight: 600;
       }
     }
@@ -235,7 +238,84 @@ $green-blur: #2a363d9e;
   }
 }
 
-.img-edit{
+.img-edit {
   height: 55px;
   padding-right: 5px;
+}
+.show-list-product-image {
+  .image {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    img {
+      width: 100%;
+    }
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      .fa {
+        color: #ff5722;
+        font-size: 1.3em;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+  .card-header {
+    $input-file-color: grey;
+    $input-file-hover-color: black;
+
+    input[type="file"] {
+      outline: 0;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .label {
+      // width: 120px;
+      // height: 100px;
+      border: 2px dashed $input-file-color;
+      display: block;
+      transition: border 300ms ease;
+      cursor: pointer;
+      text-align: center;
+      color: #fff;
+      background-color: #20a8d8;
+      border-color: #20a8d8;
+      padding: 6px 12px;
+      width: 120px;
+      float: right;
+      margin: 0;
+      input {
+        display: none;
+      }
+
+      i {
+        display: block;
+        font-size: 42px;
+        padding-bottom: 16px;
+      }
+
+      i,
+      .title {
+        color: #fff;
+        transition: 200ms color;
+      }
+    }
+  }
+}
+
+.review {
+  padding-top: 0px;
 }

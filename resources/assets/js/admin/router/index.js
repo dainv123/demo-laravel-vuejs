@@ -25,6 +25,9 @@ import UserCreate from "../views/User/create";
 import ProductList from "../views/Product/list";
 import ProductEdit from "../views/Product/edit";
 import ProductCreate from "../views/Product/create";
+import BlogList from "../views/Blog/list";
+import BlogEdit from "../views/Blog/edit";
+import BlogCreate from "../views/Blog/create";
 
 Vue.use(Router);
 
@@ -179,6 +182,29 @@ export default new Router({
               path: "create",
               name: "Create Product",
               component: ProductCreate
+            }
+          ]
+        },
+        {
+          path: "blog",
+          redirect: "blog/list",
+          name: "Blog",
+          component: Wrapper,
+          children: [
+            {
+              path: "list",
+              name: "List Blog",
+              component: BlogList
+            },
+            {
+              path: "edit/:id",
+              name: "Edit Blog",
+              component: BlogEdit
+            },
+            {
+              path: "create",
+              name: "Create Blog",
+              component: BlogCreate
             }
           ]
         }

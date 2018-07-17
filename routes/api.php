@@ -74,3 +74,12 @@ Route::group(['as' => 'product.', 'prefix' => 'product'], function () {
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'ProductController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'ProductController@postDelete']);
 });
+
+Route::group(['as' => 'blog.', 'prefix' => 'blog'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'BlogController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'BlogController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'BlogController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'BlogController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'BlogController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'BlogController@postDelete']);
+});

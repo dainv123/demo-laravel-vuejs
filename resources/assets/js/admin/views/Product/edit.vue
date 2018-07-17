@@ -107,8 +107,15 @@
                 </div>
             </b-card>
         </b-col>
-        <b-col sm="12" md="10">
-          <Review/>
+        <b-col sm="12">
+          <div class="row">
+            <b-col sm="6">
+              <Review/>
+            </b-col>
+            <b-col sm="6">
+              <ProductImage />
+            </b-col>
+          </div>
         </b-col>
         </b-col>
     </div>
@@ -116,7 +123,7 @@
 
 <script>
 import Axios from "axios";
-import { Review } from "../../components/";
+import { Review, ProductImage } from "../../components/";
 
 export default {
   name: "product-edit",
@@ -146,7 +153,8 @@ export default {
   },
   components: {
     LocalQuillEditor: VueQuillEditor.quillEditor,
-    Review
+    Review,
+    ProductImage
   },
   mounted() {
     this.get_list_productsize();
@@ -242,7 +250,7 @@ export default {
             size_id: this.size.selected,
             categorie_id: this.category.selected,
             avaibility: this.avaibility.selected,
-            user_id: 1
+            user_id: 2
           };
           var url_edit = "/api/product/edit/" + id;
           this.$validator.validateAll().then(result => {

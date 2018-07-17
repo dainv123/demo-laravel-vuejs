@@ -204,7 +204,7 @@ export default {
             size_id: this.size.selected,
             categorie_id: this.category.selected,
             avaibility: this.avaibility.selected,
-            user_id: 1
+            user_id: 2
           };
           var url_create = "/api/product/create";
           this.$validator.validateAll().then(result => {
