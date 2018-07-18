@@ -11,11 +11,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueGoodTable from "vue-good-table";
 import VeeValidate from "vee-validate";
+import "beautify-scrollbar/dist/index.css";
+import "v2-table/dist/index.css";
+import V2Table from "v2-table";
 
 Vue.use(VueQuillEditor);
 Vue.use(VeeValidate);
 Vue.use(VueGoodTable);
 Vue.use(BootstrapVue);
+Vue.use(V2Table);
 
 /* eslint-disable no-new */
 new Vue({

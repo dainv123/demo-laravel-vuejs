@@ -20306,19 +20306,19 @@ hr.transparent {
 }
 
 @media screen and (max-width: 600px) {
-  th.line-numbers {
+  .show-list-item th.line-numbers {
     display: none;
   }
 
-  table {
+  .show-list-item table {
     border: 0;
   }
 
-  table caption {
+  .show-list-item table caption {
     font-size: 1.3em;
   }
 
-  table thead {
+  .show-list-item table thead {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -20329,38 +20329,38 @@ hr.transparent {
     width: 1px;
   }
 
-  table tr {
+  .show-list-item table tr {
     display: block;
     margin-bottom: 0.625em;
     border: 1px solid #ddd;
   }
 
-  table td {
+  .show-list-item table td {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: 0.8em;
     text-align: right;
   }
 
-  table td span::before {
+  .show-list-item table td span::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: capitalize;
   }
 
-  table td:last-child {
+  .show-list-item table td:last-child {
     border-bottom: 0;
   }
 
-  .show-list-item .vgt-table td,
-  .show-list-item .vgt-table th {
+  .show-list-item .show-list-item .vgt-table td,
+  .show-list-item .show-list-item .vgt-table th {
     border: none;
     display: grid;
   }
 
-  .show-list-item .vgt-table td.line-numbers,
-  .show-list-item .vgt-table th.line-numbers {
+  .show-list-item .show-list-item .vgt-table td.line-numbers,
+  .show-list-item .show-list-item .vgt-table th.line-numbers {
     display: none;
   }
 }
@@ -20383,6 +20383,7 @@ hr.transparent {
 
 .show-list-product-image .image img {
   width: 100%;
+  max-height: 100px;
 }
 
 .show-list-product-image .image span {
@@ -20414,29 +20415,18 @@ hr.transparent {
 }
 
 .show-list-product-image .card-header .label {
-  border: 2px dashed grey;
-  display: block;
   -webkit-transition: border 300ms ease;
-  transition: border 300ms ease;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
-  background-color: #20a8d8;
-  border-color: #20a8d8;
   padding: 6px 12px;
-  width: 120px;
   float: right;
   margin: 0;
+  margin-left: 5px;
+  position: absolute;
+  top: 5px;
+  right: 18px;
 }
 
 .show-list-product-image .card-header .label input {
   display: none;
-}
-
-.show-list-product-image .card-header .label i {
-  display: block;
-  font-size: 42px;
-  padding-bottom: 16px;
 }
 
 .show-list-product-image .card-header .label i,
@@ -20446,7 +20436,29 @@ hr.transparent {
   transition: 200ms color;
 }
 
+.show-list-product-image .card-header .label.border-none {
+  padding: 0;
+  padding-top: 6px;
+}
+
 .review {
   padding-top: 0px;
+}
+
+.gallery-product-image {
+  text-align: center;
+  border: 2px dashed grey;
+}
+
+.v2-table__table-container.beautify-scroll-container {
+  border-right: 1px solid #dfe6ec;
+}
+
+.v2-table__cell.v2-table__column-cell {
+  color: #000;
+}
+
+.v2-table__cell.v2-table__column-cell {
+  background-color: #e4e5e6;
 }
 

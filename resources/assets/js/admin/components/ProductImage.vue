@@ -1,19 +1,15 @@
 <template>
     <div  class="show-list-product-image">
       <b-card>
-          <div slot="header"><i class="fa fa-opencart" /> Product Image
+          <div slot="header"><i class="fa fa-image" /> Product Image
             <label class="label btn btn-primary">
-              <span class="title">Add</span>
-              <input type="file" v-on:change="onImageChange" name="productimage" />
-            </label>
-            <label class="label btn btn-primary">
-              <span class="title">Add</span>
+              <span class="title"><i class="fa fa-plus" /> </span>
               <input type="file" v-on:change="onImageChange" name="productimage" />
             </label>
           </div>
           <div class="gallery-product-image">
             <div class="image"  v-for="(image, i) in images"  @click="index = i">
-              <img :src="image">
+              <img :src="image" />
               <span><i class="fa fa-times"></i></span>
             </div>
             <vue-gallery-slideshow :images="images" :index="index" @close="index = null"></vue-gallery-slideshow>
@@ -31,21 +27,12 @@ export default {
     VueGallerySlideshow
   },
   data: () => ({
-    images: [
-      "https://placekitten.com/801/800",
-      "https://placekitten.com/802/800",
-      "https://placekitten.com/803/800",
-      "https://placekitten.com/804/800",
-      "https://placekitten.com/805/800",
-      "https://placekitten.com/806/800",
-      "https://placekitten.com/807/800",
-      "https://placekitten.com/808/800",
-      "https://placekitten.com/809/800",
-      "https://placekitten.com/810/800"
-    ],
+    images: [],
     index: null
   }),
-  mounted() {},
+  mounted() {
+    this.getListImage();
+  },
   methods: {
     onImageChange(e) {
       let name = e.target.name;
@@ -56,23 +43,43 @@ export default {
     createImage(name, file) {
       let reader = new FileReader();
       let vm = this;
-      console.log(name, file);
       reader.onload = e => {
-        switch (name) {
-          case "image":
-            vm.image = e.target.result;
-            break;
-          case "hoverimage":
-            vm.hoverimage = e.target.result;
-            break;
-          case "productimage":
-            vm.productimage = e.target.result;
-            break;
-          default:
-            break;
-        }
+        this.uploadImage(e.target.result);
       };
       reader.readAsDataURL(file);
+    },
+    getListImage() {
+      let pid = this.$route.params.id;
+      this.url = "/api/productimage/edit/" + pid;
+      Axios.get(this.url)
+        .then(response => {
+          this.images = response.data.map(function(obj) {
+            return "/images/" + obj.image;
+          });
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    },
+    uploadImage(image) {
+      let pid = this.$route.params.id;
+      let url_edit = "/api/productimage/create";
+      let data_create = {
+        id: pid,
+        image: image
+      };
+      Axios.post(url_edit, data_create)
+        .then(response => {
+          if (response.data.status == true) {
+            this.getListImage();
+            swal("Edit Success!", "Create success!", "success");
+          } else swal("Oops!", "Create Faild!", "error");
+        })
+        .catch(function(error) {
+          swal("Oops!", "Create Faild!", "error");
+          e.preventDefault();
+          console.error(error);
+        });
     }
   }
 };

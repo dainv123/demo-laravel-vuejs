@@ -28,6 +28,9 @@ import ProductCreate from "../views/Product/create";
 import BlogList from "../views/Blog/list";
 import BlogEdit from "../views/Blog/edit";
 import BlogCreate from "../views/Blog/create";
+import SliderList from "../views/Slider/list";
+import SliderEdit from "../views/Slider/edit";
+import SliderCreate from "../views/Slider/create";
 
 Vue.use(Router);
 
@@ -205,6 +208,29 @@ export default new Router({
               path: "create",
               name: "Create Blog",
               component: BlogCreate
+            }
+          ]
+        },
+        {
+          path: "slider",
+          redirect: "slider/list",
+          name: "Slider",
+          component: Wrapper,
+          children: [
+            {
+              path: "list",
+              name: "List Slider",
+              component: SliderList
+            },
+            {
+              path: "edit/:id",
+              name: "Edit Slider",
+              component: SliderEdit
+            },
+            {
+              path: "create",
+              name: "Create Slider",
+              component: SliderCreate
             }
           ]
         }
