@@ -92,3 +92,12 @@ Route::group(['as' => 'productimage.', 'prefix' => 'productimage'], function () 
     Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'ProductImageController@postEdit']);
     Route::post('delete', ['as' => 'delete', 'uses' => 'ProductImageController@postDelete']);
 });
+
+Route::group(['as' => 'slider.', 'prefix' => 'slider'], function () {
+    Route::get('/', ['as' => 'index', 'uses' => 'SliderController@getList']);
+    Route::get('create', ['as' => 'create', 'uses' => 'SliderController@getCreate']);
+    Route::post('create', ['as' => 'create', 'uses' => 'SliderController@postCreate']);
+    Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'SliderController@getEdit']);
+    Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'SliderController@postEdit']);
+    Route::post('delete', ['as' => 'delete', 'uses' => 'SliderController@postDelete']);
+});

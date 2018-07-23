@@ -4,11 +4,11 @@
       <b-card>
         <div slot="header">
           <i class="fa fa-opencart" />
-          List Blog
+          List Slider
           <b-link class="float-right btn btn-primary" :to="{ name: 'Create Slider'}">Create</b-link>
         </div>
         <vue-good-table
-          ref="blog_table"
+          ref="slider_table"
           @on-column-filter="onColumnFilter"
           @on-row-click="onColumnFilter"
           @on-sort-change="onSortChange"
@@ -52,7 +52,7 @@ import Axios from "axios";
 
 export default {
   props: [],
-  name: "blog-list",
+  name: "slider-list",
   data() {
     return {
       url: "",
@@ -67,24 +67,8 @@ export default {
           }
         },
         {
-          label: "Price",
-          field: "price",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
           label: "Image",
           field: "image",
-          filterOptions: {
-            enabled: true,
-            trigger: "enter"
-          }
-        },
-        {
-          label: "Keywords",
-          field: "keywords",
           filterOptions: {
             enabled: true,
             trigger: "enter"
@@ -127,7 +111,7 @@ export default {
   },
   methods: {
     get_list() {
-      this.url = "/api/blog";
+      this.url = "/api/slider";
       Axios.get(this.url)
         .then(response => {
           console.log("response", response.data.data);
@@ -138,7 +122,7 @@ export default {
         });
     },
     edit(id) {
-      this.$router.push({ name: "Edit Blog", params: { id: id } });
+      this.$router.push({ name: "Edit Slider", params: { id: id } });
     },
     del(id) {
       swal({
@@ -150,13 +134,13 @@ export default {
       }).then(willDelete => {
         if (willDelete) {
           var data_delete = { id: id };
-          this.url_delete = "/api/blog/delete";
+          this.url_delete = "/api/slider/delete";
           console.log("url", this.url_delete, data_delete);
           Axios.post(this.url_delete, data_delete)
             .then(response => {
               if (response.data.status == true) {
                 this.get_list();
-                swal("Delete Success!", "Delete inpage success!", "success");
+                swal("Delete Success!", "Delete success!", "success");
               } else swal("Oops!", "Delete Faild!", "error");
             })
             .catch(function(error) {

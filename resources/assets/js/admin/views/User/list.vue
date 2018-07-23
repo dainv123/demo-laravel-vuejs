@@ -162,7 +162,7 @@ export default {
             .then(response => {
               if (response.data.status == true) {
                 this.get_list();
-                swal("Delete Success!", "Delete inpage success!", "success");
+                swal("Delete Success!", "Delete success!", "success");
               } else swal("Oops!", "Delete Faild!", "error");
             })
             .catch(function(error) {

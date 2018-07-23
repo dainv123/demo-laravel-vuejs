@@ -33818,6 +33818,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   data: function data() {
     return {
       images: [],
+      images_second: [],
       index: null
     };
   },
@@ -33826,6 +33827,31 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
 
   methods: {
+    del: function del(id) {
+      var _this = this;
+
+      swal({
+        title: "Are you sure?",
+        text: "Are you delete",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(function (willDelete) {
+        if (willDelete) {
+          var data_delete = { id: id };
+          _this.url_delete = "/api/productimage/delete";
+          __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this.url_delete, data_delete).then(function (response) {
+            if (response.data.status == true) {
+              _this.getListImage();
+              swal("Delete Success!", "Delete success!", "success");
+            } else swal("Oops!", "Delete Faild!", "error");
+          }).catch(function (error) {
+            swal("Oops!", "Delete Faild!", "error");
+            console.error(error);
+          });
+        }
+      });
+    },
     onImageChange: function onImageChange(e) {
       var name = e.target.name;
       var files = e.target.files || e.dataTransfer.files;
@@ -33833,22 +33859,23 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       this.createImage(name, files[0]);
     },
     createImage: function createImage(name, file) {
-      var _this = this;
+      var _this2 = this;
 
       var reader = new FileReader();
       var vm = this;
       reader.onload = function (e) {
-        _this.uploadImage(e.target.result);
+        _this2.uploadImage(e.target.result);
       };
       reader.readAsDataURL(file);
     },
     getListImage: function getListImage() {
-      var _this2 = this;
+      var _this3 = this;
 
       var pid = this.$route.params.id;
       this.url = "/api/productimage/edit/" + pid;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.url).then(function (response) {
-        _this2.images = response.data.map(function (obj) {
+        _this3.images = response.data;
+        _this3.images_second = response.data.map(function (obj) {
           return "/images/" + obj.image;
         });
       }).catch(function (error) {
@@ -33856,7 +33883,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       });
     },
     uploadImage: function uploadImage(image) {
-      var _this3 = this;
+      var _this4 = this;
 
       var pid = this.$route.params.id;
       var url_edit = "/api/productimage/create";
@@ -33866,7 +33893,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       };
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url_edit, data_create).then(function (response) {
         if (response.data.status == true) {
-          _this3.getListImage();
+          _this4.getListImage();
           swal("Edit Success!", "Create success!", "success");
         } else swal("Oops!", "Create Faild!", "error");
       }).catch(function (error) {
@@ -34281,7 +34308,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -34638,7 +34665,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -35015,7 +35042,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -35405,7 +35432,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -35879,7 +35906,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -36483,7 +36510,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -37282,7 +37309,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -37847,7 +37874,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: [],
-  name: "blog-list",
+  name: "slider-list",
   data: function data() {
     return {
       url: "",
@@ -37860,22 +37887,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           trigger: "enter"
         }
       }, {
-        label: "Price",
-        field: "price",
-        filterOptions: {
-          enabled: true,
-          trigger: "enter"
-        }
-      }, {
         label: "Image",
         field: "image",
-        filterOptions: {
-          enabled: true,
-          trigger: "enter"
-        }
-      }, {
-        label: "Keywords",
-        field: "keywords",
         filterOptions: {
           enabled: true,
           trigger: "enter"
@@ -37916,7 +37929,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     get_list: function get_list() {
       var _this = this;
 
-      this.url = "/api/blog";
+      this.url = "/api/slider";
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.url).then(function (response) {
         console.log("response", response.data.data);
         _this.rows = response.data.data;
@@ -37925,7 +37938,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       });
     },
     edit: function edit(id) {
-      this.$router.push({ name: "Edit Blog", params: { id: id } });
+      this.$router.push({ name: "Edit Slider", params: { id: id } });
     },
     del: function del(id) {
       var _this2 = this;
@@ -37939,12 +37952,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       }).then(function (willDelete) {
         if (willDelete) {
           var data_delete = { id: id };
-          _this2.url_delete = "/api/blog/delete";
+          _this2.url_delete = "/api/slider/delete";
           console.log("url", _this2.url_delete, data_delete);
           __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(_this2.url_delete, data_delete).then(function (response) {
             if (response.data.status == true) {
               _this2.get_list();
-              swal("Delete Success!", "Delete inpage success!", "success");
+              swal("Delete Success!", "Delete success!", "success");
             } else swal("Oops!", "Delete Faild!", "error");
           }).catch(function (error) {
             swal("Oops!", "Delete Faild!", "error");
@@ -38083,34 +38096,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "blog-edit",
+  name: "slider-edit",
   data: function data() {
     return {
       name: "",
@@ -38120,7 +38111,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       image: "",
       content: "<h2>...</h2>",
       editorOption: { theme: "snow" },
-      category: { selected: "", options: "" },
+      product: { selected: "", options: "" },
       avaibility: {
         selected: "",
         options: [{ text: "Avaibility", value: "", disabled: true }, { text: "Not available", value: "notavailable" }, { text: "In stock", value: "instock" }]
@@ -38129,11 +38120,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
 
   components: {
-    LocalQuillEditor: VueQuillEditor.quillEditor,
+    // LocalQuillEditor: VueQuillEditor.quillEditor,
     Review: __WEBPACK_IMPORTED_MODULE_1__components___["f" /* Review */]
   },
   mounted: function mounted() {
-    this.get_list_category();
+    this.get_list_product();
     this.get_item();
   },
 
@@ -38142,7 +38133,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this = this;
 
       this.id = this.$route.params.id;
-      this.url_edit = "/api/blog/edit/" + this.id;
+      this.url_edit = "/api/slider/edit/" + this.id;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.url_edit).then(function (response) {
         console.log(response);
         _this.name = response.data.name;
@@ -38151,20 +38142,20 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         _this.description = response.data.description;
         _this.image = response.data.image;
         _this.content = response.data.email;
-        _this.category.selected = response.data.categorie_id;
+        _this.product.selected = response.data.product_id;
         _this.content = response.data.content;
       }).catch(function (error) {
         console.error(error);
       });
     },
-    get_list_category: function get_list_category() {
+    get_list_product: function get_list_product() {
       var _this2 = this;
 
-      this.url = "/api/category/";
+      this.url = "/api/product/";
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.url).then(function (response) {
-        _this2.category.options = '<option value="" disabled selected>Categoty</option>';
+        _this2.product.options = '<option value="" disabled selected>Product</option>';
         response.data.data.forEach(function (element) {
-          _this2.category.options = _this2.category.options + '<option value="' + element.id + '">' + element.name + "</option>";
+          _this2.product.options = _this2.product.options + '<option value="' + element.id + '">' + element.name + "</option>";
         });
       }).catch(function (error) {
         console.error(error);
@@ -38189,15 +38180,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             image: _this3.image,
             intro: _this3.intro,
             content: _this3.content,
-            categorie_id: _this3.category.selected,
+            product_id: _this3.product.selected,
             user_id: 2
           };
-          var url_edit = "/api/blog/edit/" + id;
+          var url_edit = "/api/slider/edit/" + id;
           _this3.$validator.validateAll().then(function (result) {
             if (result) {
               __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url_edit, data_edit).then(function (response) {
                 if (response.data.status == true) {
-                  _this3.$router.push({ name: "List Blog" });
+                  _this3.$router.push({ name: "List Slider" });
                   swal("Edit Success!", "Edit success!", "success");
                 } else swal("Oops!", "Edit Faild!", "error");
               }).catch(function (error) {
@@ -38242,11 +38233,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     onEditorReady: function onEditorReady(quill) {
       console.log("editor ready!", quill);
     }
-  },
-  computed: {
-    editorA: function editorA() {
-      return this.$refs.quillEditorA.quill;
-    }
   }
 });
 
@@ -38257,24 +38243,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -38340,7 +38308,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       image: "",
       content: "<h2>...</h2>",
       editorOption: { theme: "snow" },
-      category: { selected: "", options: "" },
+      product: { selected: "", options: "" },
       avaibility: {
         selected: "",
         options: [{ text: "Avaibility", value: "", disabled: true }, { text: "Not available", value: "notavailable" }, { text: "In stock", value: "instock" }]
@@ -38349,21 +38317,21 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
 
   components: {
-    LocalQuillEditor: VueQuillEditor.quillEditor
+    // LocalQuillEditor: VueQuillEditor.quillEditor
   },
   mounted: function mounted() {
-    this.get_list_category();
+    this.get_list_product();
   },
 
   methods: {
-    get_list_category: function get_list_category() {
+    get_list_product: function get_list_product() {
       var _this = this;
 
-      this.url = "/api/category/";
+      this.url = "/api/product/";
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.url).then(function (response) {
-        _this.category.options = '<option value="" disabled selected>Categoty</option>';
+        _this.product.options = '<option value="" disabled selected>Products</option>';
         response.data.data.forEach(function (element) {
-          _this.category.options = _this.category.options + '<option value="' + element.id + '">' + element.name + "</option>";
+          _this.product.options = _this.product.options + '<option value="' + element.id + '">' + element.name + "</option>";
         });
       }).catch(function (error) {
         console.error(error);
@@ -38387,8 +38355,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             image: _this2.image,
             intro: _this2.intro,
             content: _this2.content,
-            categorie_id: _this2.category.selected,
-            user_id: 2
+            product_id: _this2.product.selected
           };
           var url_create = "/api/slider/create";
           _this2.$validator.validateAll().then(function (result) {
@@ -38430,22 +38397,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         }
       };
       reader.readAsDataURL(file);
-    },
-    onEditorBlur: function onEditorBlur(quill) {
-      console.log("editor blur!", quill);
-    },
-    onEditorFocus: function onEditorFocus(quill) {
-      console.log("editor focus!", quill);
-    },
-    onEditorReady: function onEditorReady(quill) {
-      console.log("editor ready!", quill);
-    }
-  },
-  computed: {
-    editorA: function editorA() {
-      return this.$refs.quillEditorA.quill;
     }
   }
+
 });
 
 /***/ }),
@@ -76557,18 +76511,18 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   items: [{
     name: 'Dashboard',
-    url: 'dashboard',
+    url: '/dashboard',
     icon: 'icon-speedometer'
   }, {
     name: 'Authentication',
     icon: 'icon-speedometer',
     children: [{
       name: 'User',
-      url: 'user',
-      icon: 'icon-bell'
+      url: '/user',
+      icon: 'icon-user'
     }, {
       name: 'Role',
-      url: 'role',
+      url: '/role',
       icon: 'icon-star',
       badge: {
         variant: 'success',
@@ -76576,7 +76530,7 @@ if (false) {(function () {
       }
     }, {
       name: 'Permission',
-      url: 'permission',
+      url: '/permission',
       icon: 'icon-star',
       badge: {
         variant: 'secondary',
@@ -76591,48 +76545,48 @@ if (false) {(function () {
       icon: 'icon-bell',
       children: [{
         name: 'Blog',
-        url: 'blog',
+        url: '/blog',
         icon: 'icon-bell'
       }, {
         name: 'Review',
-        url: 'blogreview',
+        url: '/blogreview',
         icon: 'icon-bell'
       }, {
         name: 'Raiting',
-        url: 'blograiting',
+        url: '/blograiting',
         icon: 'icon-bell'
       }]
     }, {
       name: 'Category',
-      url: 'category',
+      url: '/category',
       icon: 'icon-bell'
     }, {
       name: 'Product',
       icon: 'icon-bell',
       children: [{
         name: 'Product',
-        url: 'product',
+        url: '/product',
         icon: 'icon-bell'
       }, {
         name: 'Review',
-        url: 'productreview',
+        url: '/productreview',
         icon: 'icon-bell'
       }, {
         name: 'Raiting',
-        url: 'productraiting',
+        url: '/productraiting',
         icon: 'icon-bell'
       }, {
         name: 'Image',
-        url: 'productimage',
+        url: '/productimage',
         icon: 'icon-bell'
       }]
     }, {
       name: 'Size',
-      url: 'productsize',
+      url: '/productsize',
       icon: 'icon-bell'
     }, {
       name: 'Slider',
-      url: 'slider',
+      url: '/slider',
       icon: 'icon-bell'
     }]
   }]
@@ -78932,26 +78886,32 @@ var render = function() {
           { staticClass: "gallery-product-image" },
           [
             _vm._l(_vm.images, function(image, i) {
-              return _c(
-                "div",
-                {
-                  staticClass: "image",
+              return _c("div", { staticClass: "image" }, [
+                _c("img", {
+                  attrs: { src: /images/ + image.image },
                   on: {
                     click: function($event) {
                       _vm.index = i
                     }
                   }
-                },
-                [
-                  _c("img", { attrs: { src: image } }),
-                  _vm._v(" "),
-                  _c("span", [_c("i", { staticClass: "fa fa-times" })])
-                ]
-              )
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.del(image.id)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-times" })]
+                )
+              ])
             }),
             _vm._v(" "),
             _c("vue-gallery-slideshow", {
-              attrs: { images: _vm.images, index: _vm.index },
+              attrs: { images: _vm.images_second, index: _vm.index },
               on: {
                 close: function($event) {
                   _vm.index = null
@@ -86457,7 +86417,7 @@ var render = function() {
                 { attrs: { slot: "header" }, slot: "header" },
                 [
                   _c("i", { staticClass: "fa fa-opencart" }),
-                  _vm._v("\n        List Blog\n        "),
+                  _vm._v("\n        List Slider\n        "),
                   _c(
                     "b-link",
                     {
@@ -86471,7 +86431,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("vue-good-table", {
-                ref: "blog_table",
+                ref: "slider_table",
                 attrs: {
                   columns: _vm.columns,
                   rows: _vm.rows,
@@ -86703,7 +86663,7 @@ var render = function() {
             [
               _c("div", { attrs: { slot: "header" }, slot: "header" }, [
                 _c("i", { staticClass: "fa fa-opencart" }),
-                _vm._v(" Edit Blog\n            ")
+                _vm._v(" Edit Slider\n            ")
               ]),
               _vm._v(" "),
               _c(
@@ -86838,14 +86798,14 @@ var render = function() {
                         [
                           _c("b-form-select", {
                             domProps: {
-                              innerHTML: _vm._s(_vm.category.options)
+                              innerHTML: _vm._s(_vm.product.options)
                             },
                             model: {
-                              value: _vm.category.selected,
+                              value: _vm.product.selected,
                               callback: function($$v) {
-                                _vm.$set(_vm.category, "selected", $$v)
+                                _vm.$set(_vm.product, "selected", $$v)
                               },
-                              expression: "category.selected"
+                              expression: "product.selected"
                             }
                           }),
                           _vm._v(" "),
@@ -86874,7 +86834,7 @@ var render = function() {
                 [
                   _c(
                     "b-form-group",
-                    { staticClass: "col-sm-6" },
+                    { staticClass: "col-sm-12" },
                     [
                       _c(
                         "b-input-group",
@@ -86932,68 +86892,6 @@ var render = function() {
                       )
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-form-group",
-                    { staticClass: "col-sm-6" },
-                    [
-                      _c(
-                        "b-input-group",
-                        [
-                          _c("b-form-input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required",
-                                expression: "'required'"
-                              }
-                            ],
-                            attrs: {
-                              type: "text",
-                              placeholder: "Keyword",
-                              name: "keywords"
-                            },
-                            model: {
-                              value: _vm.keywords,
-                              callback: function($$v) {
-                                _vm.keywords = $$v
-                              },
-                              expression: "keywords"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "b-input-group-append",
-                            [
-                              _c("b-input-group-text", [
-                                _c("i", { staticClass: "fa fa-info" })
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("keywords"),
-                              expression: "errors.has('keywords')"
-                            }
-                          ],
-                          staticStyle: { color: "red" }
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("keywords")))]
-                      )
-                    ],
-                    1
                   )
                 ],
                 1
@@ -87042,50 +86940,13 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "row" },
-                [
-                  _c(
-                    "b-form-group",
-                    { staticClass: "col-sm-12" },
-                    [
-                      _c("quill-editor", {
-                        ref: "quillEditorA",
-                        attrs: { options: _vm.editorOption },
-                        on: {
-                          blur: function($event) {
-                            _vm.onEditorBlur($event)
-                          },
-                          focus: function($event) {
-                            _vm.onEditorFocus($event)
-                          },
-                          ready: function($event) {
-                            _vm.onEditorReady($event)
-                          }
-                        },
-                        model: {
-                          value: _vm.content,
-                          callback: function($$v) {
-                            _vm.content = $$v
-                          },
-                          expression: "content"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
                 { staticClass: "form-group form-actions" },
                 [
                   _c(
                     "b-link",
                     {
                       staticClass: "btn btn-danger",
-                      attrs: { to: { name: "List Blog" } }
+                      attrs: { to: { name: "List Slider" } }
                     },
                     [_vm._v("Cancel")]
                   ),
@@ -87110,9 +86971,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("b-col", { attrs: { sm: "12", md: "10" } }, [_c("Review")], 1)
+      )
     ],
     1
   )
@@ -87335,14 +87194,14 @@ var render = function() {
                         [
                           _c("b-form-select", {
                             domProps: {
-                              innerHTML: _vm._s(_vm.category.options)
+                              innerHTML: _vm._s(_vm.product.options)
                             },
                             model: {
-                              value: _vm.category.selected,
+                              value: _vm.product.selected,
                               callback: function($$v) {
-                                _vm.$set(_vm.category, "selected", $$v)
+                                _vm.$set(_vm.product, "selected", $$v)
                               },
-                              expression: "category.selected"
+                              expression: "product.selected"
                             }
                           }),
                           _vm._v(" "),
@@ -87371,7 +87230,7 @@ var render = function() {
                 [
                   _c(
                     "b-form-group",
-                    { staticClass: "col-sm-6" },
+                    { staticClass: "col-sm-12" },
                     [
                       _c(
                         "b-input-group",
@@ -87429,68 +87288,6 @@ var render = function() {
                       )
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-form-group",
-                    { staticClass: "col-sm-6" },
-                    [
-                      _c(
-                        "b-input-group",
-                        [
-                          _c("b-form-input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required",
-                                expression: "'required'"
-                              }
-                            ],
-                            attrs: {
-                              type: "text",
-                              placeholder: "Keyword",
-                              name: "keywords"
-                            },
-                            model: {
-                              value: _vm.keywords,
-                              callback: function($$v) {
-                                _vm.keywords = $$v
-                              },
-                              expression: "keywords"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "b-input-group-append",
-                            [
-                              _c("b-input-group-text", [
-                                _c("i", { staticClass: "fa fa-info" })
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("keywords"),
-                              expression: "errors.has('keywords')"
-                            }
-                          ],
-                          staticStyle: { color: "red" }
-                        },
-                        [_vm._v(_vm._s(_vm.errors.first("keywords")))]
-                      )
-                    ],
-                    1
                   )
                 ],
                 1
@@ -87530,43 +87327,6 @@ var render = function() {
                         },
                         [_vm._v(_vm._s(_vm.errors.first("intro")))]
                       )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                [
-                  _c(
-                    "b-form-group",
-                    { staticClass: "col-sm-12" },
-                    [
-                      _c("quill-editor", {
-                        ref: "quillEditorA",
-                        attrs: { options: _vm.editorOption },
-                        on: {
-                          blur: function($event) {
-                            _vm.onEditorBlur($event)
-                          },
-                          focus: function($event) {
-                            _vm.onEditorFocus($event)
-                          },
-                          ready: function($event) {
-                            _vm.onEditorReady($event)
-                          }
-                        },
-                        model: {
-                          value: _vm.content,
-                          callback: function($$v) {
-                            _vm.content = $$v
-                          },
-                          expression: "content"
-                        }
-                      })
                     ],
                     1
                   )

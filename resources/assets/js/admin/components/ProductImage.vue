@@ -8,11 +8,11 @@
             </label>
           </div>
           <div class="gallery-product-image">
-            <div class="image"  v-for="(image, i) in images"  @click="index = i">
-              <img :src="image" />
-              <span><i class="fa fa-times"></i></span>
+            <div class="image"  v-for="(image, i) in images" >
+              <img :src="/images/+image.image" @click="index = i" />
+              <span @click="del(image.id)"><i class="fa fa-times"></i></span>
             </div>
-            <vue-gallery-slideshow :images="images" :index="index" @close="index = null"></vue-gallery-slideshow>
+            <vue-gallery-slideshow :images="images_second" :index="index" @close="index = null"></vue-gallery-slideshow>
           </div>
       </b-card>
     </div>
@@ -28,12 +28,38 @@ export default {
   },
   data: () => ({
     images: [],
+    images_second: [],
     index: null
   }),
   mounted() {
     this.getListImage();
   },
   methods: {
+    del(id){
+      swal({
+        title: "Are you sure?",
+        text: "Are you delete",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          var data_delete = { id: id };
+          this.url_delete = "/api/productimage/delete";
+          Axios.post(this.url_delete, data_delete)
+            .then(response => {
+              if (response.data.status == true) {
+                this.getListImage();
+                swal("Delete Success!", "Delete success!", "success");
+              } else swal("Oops!", "Delete Faild!", "error");
+            })
+            .catch(function(error) {
+              swal("Oops!", "Delete Faild!", "error");
+              console.error(error);
+            });
+        }
+      });
+    },
     onImageChange(e) {
       let name = e.target.name;
       let files = e.target.files || e.dataTransfer.files;
@@ -53,7 +79,8 @@ export default {
       this.url = "/api/productimage/edit/" + pid;
       Axios.get(this.url)
         .then(response => {
-          this.images = response.data.map(function(obj) {
+          this.images = response.data;
+          this.images_second = response.data.map(function(obj) {
             return "/images/" + obj.image;
           });
         })
