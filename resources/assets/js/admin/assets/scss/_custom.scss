@@ -5,7 +5,9 @@
 }
 $white-blur: #ffffffd9;
 $green-blur: #2a363d9e;
-
+.visibility-hidden {
+  visibility: hidden !important;
+}
 // Here you can add other styles
 .app-header.navbar .navbar-toggler-icon.navbar-toggler-icon-user {
   height: 23px;
@@ -98,7 +100,7 @@ $green-blur: #2a363d9e;
   .vgt-input {
     top: 7px;
     right: 1.25rem;
-    padding: 9px 10px;
+    padding: 6px 10px;
     font-size: 12px;
     line-height: 1.5;
     border-radius: 3px;

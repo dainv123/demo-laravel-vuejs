@@ -90,7 +90,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @-ms-viewport {
@@ -20108,6 +20108,10 @@ hr.transparent {
   border-right-color: #536c79;
 }
 
+.visibility-hidden {
+  visibility: hidden !important;
+}
+
 .app-header.navbar .navbar-toggler-icon.navbar-toggler-icon-user {
   height: 23px;
   background-image: url("/static/img/user-info.png");
@@ -20219,7 +20223,7 @@ hr.transparent {
 .show-list-item .vgt-input {
   top: 7px;
   right: 1.25rem;
-  padding: 9px 10px;
+  padding: 6px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
