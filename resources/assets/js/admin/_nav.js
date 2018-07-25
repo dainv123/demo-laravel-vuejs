@@ -3,11 +3,11 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer'
+      icon: 'icon-home'
     },
     {
       name: 'Authentication',
-      icon: 'icon-speedometer',
+      icon: 'icon-people',
       children: [
         {
           name: 'User',
@@ -17,7 +17,7 @@ export default {
         {
           name: 'Role',
           url: '/role',
-          icon: 'icon-star',
+          icon: 'icon-user-follow',
           badge: {
             variant: 'success',
             text: 'NEW'
@@ -26,79 +26,42 @@ export default {
         {
           name: 'Permission',
           url: '/permission',
-          icon: 'icon-star',
+          icon: 'icon-user-unfollow',
           badge: {
-            variant: 'secondary',
-            text: '4.7'
+            variant: 'success',
+            text: 'NEW'
           }
         }
       ]
     },
     {
-      name: 'Content',
-      icon: 'icon-bell',
+      name: 'Manager',
+      icon: 'icon-people',
       children: [
-        {
-          name: 'Blog',
-          icon: 'icon-bell',
-          children: [
-            {
-              name: 'Blog',
-              url: '/blog',
-              icon: 'icon-bell'
-            },
-            {
-              name: 'Review',
-              url: '/blogreview',
-              icon: 'icon-bell'
-            },
-            {
-              name: 'Raiting',
-              url: '/blograiting',
-              icon: 'icon-bell'
-            }
-          ]
-        },
         {
           name: 'Category',
           url: '/category',
-          icon: 'icon-bell'
+          icon: 'icon-list'
         },
         {
           name: 'Product',
-          icon: 'icon-bell',
-          children: [
-            {
-              name: 'Product',
-              url: '/product',
-              icon: 'icon-bell'
-            },
-            {
-              name: 'Review',
-              url: '/productreview',
-              icon: 'icon-bell'
-            },
-            {
-              name: 'Raiting',
-              url: '/productraiting',
-              icon: 'icon-bell'
-            },
-            {
-              name: 'Image',
-              url: '/productimage',
-              icon: 'icon-bell'
-            }
-          ]
+          url: '/product',
+          icon: 'icon-basket-loaded'
+        },
+        {
+          name: 'Blog',
+          url: '/blog',
+          icon: 'icon-note'
         },
         {
           name: 'Size',
           url: '/productsize',
-          icon: 'icon-bell'
+          icon: 'icon-cursor-move'
         },
         {
           name: 'Slider',
           url: '/slider',
-          icon: 'icon-bell'
+          icon: 'icon-calculator'
         }
       ]
     }

@@ -1,12 +1,12 @@
 <template>
   <div v-if="isExternalLink">
-    <a :href="url" :class="classList">
+    <a :href="url" :class="classList" @click.native="handleClick">
       <i :class="icon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </a>
   </div>
   <div v-else>
-    <router-link :to="url" :class="classList">
+    <router-link :to="url" :class="classList" @click.native="handleClick">
       <i :class="icon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </router-link>
@@ -61,6 +61,22 @@ export default {
         return true
       } else {
         return false
+      }
+    }
+  },
+  methods: {
+    /**
+     * FIX NAV ACTIVE ITEMS
+     */
+    handleClick(e) {
+      var arrayActive = document.querySelectorAll('.nav-item .open.active');
+      var nodeThis = this.$el.children[0];
+      var isThis = Array.from(arrayActive).indexOf(nodeThis);
+      if(isThis === -1) {
+        arrayActive.forEach(element => {
+          element.classList.remove("open","active");
+        });
+        nodeThis.classList.add("open","active");
       }
     }
   }
