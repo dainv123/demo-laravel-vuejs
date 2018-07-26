@@ -1,4 +1,4 @@
-export default {
+const nav_left = {
   items: [
     {
       name: 'Dashboard',
@@ -67,3 +67,34 @@ export default {
     }
   ]
 }
+const nav_right = {
+  items: [
+    {
+      name: 'Home',
+      url: '/',
+      icon: 'icon-home'
+    },
+    {
+      name: 'Profile',
+      url: '/profile/',
+      icon: 'icon-user'
+    },
+    {
+      name: 'Notification',
+      url: '/profile/notification',
+      icon: 'icon-bell'
+    },
+    {
+      name: 'Setting',
+      url: '/profile/edit',
+      icon: 'icon-speedometer'
+    },
+    {
+      name: 'Logout',
+      url: '/logout',
+      icon: 'icon-logout'
+    }
+  ]
+}
+
+export default { nav_left, nav_right };

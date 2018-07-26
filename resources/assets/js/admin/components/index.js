@@ -7,6 +7,7 @@ import Sidebar from './Sidebar/Sidebar.vue'
 import Switch from './Switch.vue'
 import Review from './Review.vue'
 import ProductImage from './ProductImage.vue'
+import Profile from './Profile.vue'
 
 export {
   Aside,
@@ -17,5 +18,6 @@ export {
   Sidebar,
   Switch,
   Review,
-  ProductImage
+  ProductImage,
+  Profile
 }

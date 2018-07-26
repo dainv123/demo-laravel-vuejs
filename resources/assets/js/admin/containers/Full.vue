@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      nav: nav.items
+      nav: nav.nav_left.items
     };
   },
   computed: {

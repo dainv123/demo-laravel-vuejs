@@ -31,6 +31,9 @@ import BlogCreate from "../views/Blog/create";
 import SliderList from "../views/Slider/list";
 import SliderEdit from "../views/Slider/edit";
 import SliderCreate from "../views/Slider/create";
+import ProfileRead from "../views/Profile/profile";
+import ProfileEdit from "../views/Profile/setting";
+import ProfileNotification from "../views/Profile/notification";
 
 Vue.use(Router);
 
@@ -231,6 +234,29 @@ export default new Router({
               path: "create",
               name: "Create Slider",
               component: SliderCreate
+            }
+          ]
+        },
+        {
+          path: "profile",
+          redirect: "/profile/",
+          name: "Profile",
+          component: {             render (c) { return c('router-view') }           },
+          children: [
+            {
+              path: "/",
+              name: "Read Profile",
+              component: ProfileRead
+            },
+            {
+              path: "edit",
+              name: "Edit Profile",
+              component: ProfileEdit
+            },
+            {
+              path: "notification",
+              name: "Notification Profile",
+              component: ProfileNotification
             }
           ]
         }
