@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
 use Datatables;
+use Hash;
+
 
 class UserController extends Controller
 {   
@@ -45,7 +47,7 @@ class UserController extends Controller
         $datas = new User();
         $data = [
             'email' => $request->get('email'),
-            'password' => $request->get('password'),
+            'password' => Hash::make($request->get('password')),
             'firstname' => $request->get('firstname'),
             'lastname' => $request->get('lastname'),
             'sex' => $request->get('sex'),

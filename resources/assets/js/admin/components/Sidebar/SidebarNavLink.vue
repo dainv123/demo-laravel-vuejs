@@ -15,19 +15,19 @@
 
 <script>
 export default {
-  name: 'sidebar-nav-link',
+  name: "sidebar-nav-link",
   props: {
     name: {
       type: String,
-      default: ''
+      default: ""
     },
     url: {
       type: String,
-      default: ''
+      default: ""
     },
     icon: {
       type: String,
-      default: ''
+      default: ""
     },
     badge: {
       type: Object,
@@ -35,32 +35,28 @@ export default {
     },
     variant: {
       type: String,
-      default: ''
+      default: ""
     },
     classes: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   computed: {
-    classList () {
-      return [
-        'nav-link',
-        this.linkVariant,
-        ...this.itemClasses
-      ]
+    classList() {
+      return ["nav-link", this.linkVariant, ...this.itemClasses];
     },
-    linkVariant () {
-      return this.variant ? `nav-link-${this.variant}` : ''
+    linkVariant() {
+      return this.variant ? `nav-link-${this.variant}` : "";
     },
-    itemClasses () {
-      return this.classes ? this.classes.split(' ') : []
+    itemClasses() {
+      return this.classes ? this.classes.split(" ") : [];
     },
-    isExternalLink () {
-      if (this.url.substring(0, 4) === 'http') {
-        return true
+    isExternalLink() {
+      if (this.url.substring(0, 4) === "http") {
+        return true;
       } else {
-        return false
+        return false;
       }
     }
   },
@@ -69,16 +65,16 @@ export default {
      * FIX NAV ACTIVE ITEMS
      */
     handleClick(e) {
-      var arrayActive = document.querySelectorAll('.nav-item .open.active');
+      var arrayActive = document.querySelectorAll(".nav-item .open.active");
       var nodeThis = this.$el.children[0];
       var isThis = Array.from(arrayActive).indexOf(nodeThis);
-      if(isThis === -1) {
+      if (isThis === -1) {
         arrayActive.forEach(element => {
-          element.classList.remove("open","active");
+          element.classList.remove("open", "active");
         });
-        nodeThis.classList.add("open","active");
+        nodeThis.classList.add("open", "active");
       }
     }
   }
-}
+};
 </script>
