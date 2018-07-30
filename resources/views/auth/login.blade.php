@@ -1,6 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    function setCookie(name, value, days) {
+        var d = new Date;
+        d.setTime(d.getTime() + 24*60*60*1000*days);
+    document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+    }
+
+    function getCookie(name) {
+        var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return v ? v[2] : null;
+    }
+
+    var delete_cookie = function(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    };
+
+    if (document.cookie.indexOf('g_token') == -1 ) {
+        console.log('k ton tai cookie');
+    }
+    else
+    {
+        var g_token = "{{ session('g_token') }}";
+        if(g_token == 'logout'){
+            delete_cookie('g_token');
+            console.log('da xoa cookie');
+        }
+        else
+        console.log('K lam gi');
+    }
+        
+
+
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

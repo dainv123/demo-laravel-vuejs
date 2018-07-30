@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Carbon\Carbon;
+use Lcobucci\JWT\Parser;
+use DB;
 
 class LoginController extends Controller
 {
@@ -55,14 +57,28 @@ class LoginController extends Controller
         })->values();
 
         
+        
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
-        
         $token->save();
+
         $g_token = $tokenResult->accessToken;
         
-        // return view('admin.index', compact('g_token'));
-        return redirect('/home')->with('g_token', $g_token);
+        return redirect('admin')->with('g_token', $g_token);
+    }
+
+    public function logout(Request $request) {
+        $user = $request->user();
+        $value = $user->tokens->load('client')->values();
+        
+        foreach($value as $token) {
+            $id = $token->id;
+            $revoked = DB::table('oauth_access_tokens')->where('id', '=', $id)->update(['revoked' => 1]);
+            $this->guard()->logout();
+        }
+
+        Auth::logout();
+        return redirect('login')->with('g_token', 'logout');
     }
     
     public function user(Request $request)

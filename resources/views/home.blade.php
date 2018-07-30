@@ -13,10 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    {!! Session::get('g_token') !!}
-                    <hr/>
-                    {{Auth::token()}}
+                    {{ session('g_token') }}
+
                     <hr/>
                     You are logged in!
                 </div>
@@ -24,4 +22,7 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
 @endsection

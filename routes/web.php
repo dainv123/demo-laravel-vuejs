@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
+Route::get('/admin',  ['as' => 'admin', function () {
     return view('admin.index');
-});
+}]);
 
 Auth::routes();
 

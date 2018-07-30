@@ -19,10 +19,36 @@
   </head>
   <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
     <div id="app"></div>
+    <script>
+      function setCookie(name, value, days) {
+        var d = new Date;
+        d.setTime(d.getTime() + 24*60*60*1000*days);
+        document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+      }
+
+      function getCookie(name) {
+        var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return v ? v[2] : null;
+      }
+
+      var delete_cookie = function(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      };
+
+      if (document.cookie.indexOf('g_token') == -1 ) {
+        console.log('set cookie');
+        var g_token = "{{ session('g_token') }}";
+        if(g_token != '')
+          setCookie('g_token', g_token, 1);
+      }
+      else
+        console.log('k set cookie');
+      
+    </script>
     <script src="{{ mix('js/main.js') }}"></script>
     <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
     <!-- Include the Quill library -->
-
+    
   </body>
 </html>
