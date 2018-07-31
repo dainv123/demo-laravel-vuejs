@@ -51,20 +51,19 @@ class LoginController extends Controller
             ], 401);
 
         $user = $request->user();
-
+            
         $user->tokens->load('client')->filter(function ($token) { 
             return $token->client->personal_access_client && ! $token->revoked; 
         })->values();
-
-        
         
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         $token->save();
 
         $g_token = $tokenResult->accessToken;
+        $g_permission = $user->role->permissions;
         
-        return redirect('admin')->with('g_token', $g_token);
+        return redirect('admin')->with(['g_token'=> $g_token, 'g_permission'=>$g_permission]);
     }
 
     public function logout(Request $request) {

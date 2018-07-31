@@ -1,5 +1,6 @@
 <template>
   <router-link tag="li" class="nav-item nav-dropdown" :to="url" disabled>
+    <h3>===============</h3>
     <div class="nav-link nav-dropdown-toggle" @click="handleClick"><i :class="icon"></i> {{name}}</div>
     <ul class="nav-dropdown-items">
       <slot></slot>
@@ -12,22 +13,24 @@ export default {
   props: {
     name: {
       type: String,
-      default: ''
+      default: ""
     },
     url: {
       type: String,
-      default: ''
+      default: ""
     },
     icon: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   methods: {
-    handleClick (e) {
-      e.preventDefault()
-      e.target.parentElement.classList.toggle('open')
+    handleClick(e) {
+      e.preventDefault();
+      e.target.parentElement.classList.toggle("open");
     }
+  },
+  mounted() {
   }
-}
+};
 </script>

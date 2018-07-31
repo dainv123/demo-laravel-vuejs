@@ -7,15 +7,43 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class ProductSizePolicy
 {
     use HandlesAuthorization;
+    public function view(User $user)
+    {
+        return $user->can('view-manager');
+    }
+    
     /**
-     * Determine whether the user can view the post.
+     * Determine whether the user can create posts.
      *
      * @param  \App\User  $user
-     * @param  \App\ProductSize  $post
      * @return mixed
      */
-    public function view()
+    public function create(User $user)
     {
-        return true;
+        return $user->can('create-manager');
+    }
+    
+    /**
+     * Determine whether the user can update the post.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return mixed
+     */
+    public function edit(User $user)
+    {
+        return $user->can('edit-manager');
+    }
+    
+    /**
+     * Determine whether the user can delete the post.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return mixed
+     */
+    public function delete(User $user)
+    {
+        return $user->can('delete-manager');
     }
 }

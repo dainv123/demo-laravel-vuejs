@@ -29,11 +29,12 @@ class User extends Authenticatable
     ];
 
     public function product(){
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Models\Product');
     }
 
-    public function role(){
-        return $this->belongsTo('App\Role');
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
     
     public function hasPermission(Permission $permission){

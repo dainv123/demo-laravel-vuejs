@@ -22,7 +22,7 @@
     }
     else
     {
-        var g_token = "{{ session('g_token') }}";
+        var g_token = "{{  Session::get('g_token') }}";
         if(g_token == 'logout'){
             delete_cookie('g_token');
             console.log('da xoa cookie');

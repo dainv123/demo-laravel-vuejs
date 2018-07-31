@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ProductSize;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 use Datatables;
 
 class ProductSizeController extends Controller
 {
     public function getList(){
-        $this->authorize('view',ProductSize::class);
-
+        $this->authorize('view', ProductSize::class);        
         $datas = ProductSize::select('id', 'name', 'dimension', 'created_at')->orderBy('id','DESC')->get()->toArray();
         return Datatables::of($datas)
             ->addColumn('action', function ($data) {
@@ -24,6 +26,8 @@ class ProductSizeController extends Controller
     }
     
     public function postCreate(Request $request){
+        $this->authorize('create', ProductSize::class);
+
         $datas = new ProductSize();
         $data = [
             'name' => $request->get('name'),
@@ -41,11 +45,13 @@ class ProductSizeController extends Controller
     }
 
     public function getEdit($id){
+        $this->authorize('edit', ProductSize::class);
         $datas = ProductSize::find($id);
         return $datas;
     }
 
     public function postEdit(Request $request){
+        $this->authorize('edit', ProductSize::class);
         $data = ProductSize::where([
             'id' => $request->get('id'),
         ])->first();
@@ -67,6 +73,8 @@ class ProductSizeController extends Controller
     }
 
     public function postDelete(Request $request){
+        $this->authorize('delete', ProductSize::class);
+
         $data = ProductSize::where([
             'id' => $request->get('id'),
         ])->first();

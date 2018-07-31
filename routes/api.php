@@ -18,7 +18,9 @@ Route::middleware(['auth:api'])->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:api'])->group(function () {
-    
+// Route::group(['prefix'=>'admin',  'middleware' => 'admin'], function(){
+
+
     Route::get('local/{filename}', ['uses' => 'ApiLocalController@getInfo']);
 
     Route::group(['as' => 'role.', 'prefix' => 'role'], function () {

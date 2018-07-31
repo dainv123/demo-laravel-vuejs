@@ -17,6 +17,7 @@
 
                     <hr/>
                     You are logged in!
+                    {{ Auth::user()->email }}
                 </div>
             </div>
         </div>

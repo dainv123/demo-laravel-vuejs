@@ -57,7 +57,7 @@ export default new Router({
           path: "role",
           redirect: "/role/list",
           name: "Role",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -80,7 +80,7 @@ export default new Router({
           path: "permission",
           redirect: "/permission/list",
           name: "Permission",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -103,7 +103,7 @@ export default new Router({
           path: "productsize",
           redirect: "/productsize/list",
           name: "Product Size",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -126,7 +126,7 @@ export default new Router({
           path: "category",
           redirect: "/category/list",
           name: "Category",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -149,7 +149,7 @@ export default new Router({
           path: "user",
           redirect: "/user/list",
           name: "User",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -172,7 +172,7 @@ export default new Router({
           path: "product",
           redirect: "/product/list",
           name: "Product",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -195,7 +195,7 @@ export default new Router({
           path: "blog",
           redirect: "/blog/list",
           name: "Blog",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -218,7 +218,7 @@ export default new Router({
           path: "slider",
           redirect: "/slider/list",
           name: "Slider",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "list",
@@ -241,7 +241,7 @@ export default new Router({
           path: "profile",
           redirect: "/profile/",
           name: "Profile",
-          component: {             render (c) { return c('router-view') }           },
+          component: { render(c) { return c('router-view') } },
           children: [
             {
               path: "/",

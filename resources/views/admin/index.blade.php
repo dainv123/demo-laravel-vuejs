@@ -37,13 +37,20 @@
 
       if (document.cookie.indexOf('g_token') == -1 ) {
         console.log('set cookie');
-        var g_token = "{{ session('g_token') }}";
+        var g_token = "{{ Session::get('g_token') }}";
         if(g_token != '')
           setCookie('g_token', g_token, 1);
       }
       else
         console.log('k set cookie');
-      
+
+
+        var a = '{{ Session::get('g_permission') }}'
+      console.log(a);
+
+       // @if (Auth::user()->can('view-manager'))
+      //   console.log('roleeeeeee); role
+      // @endif
     </script>
     <script src="{{ mix('js/main.js') }}"></script>
     <script src="{{asset('js/sweetalert.min.js')}}"></script>

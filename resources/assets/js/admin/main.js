@@ -17,7 +17,7 @@ import V2Table from "v2-table";
 import Axios from "axios";
 
 const g_token = getCookie('g_token');
-Axios.defaults.headers.common['Authorization'] = "Bearer "+g_token;
+Axios.defaults.headers.common['Authorization'] = "Bearer " + g_token;
 
 Vue.use(VueQuillEditor);
 Vue.use(VeeValidate);
