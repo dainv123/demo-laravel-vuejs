@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\ProductSize' => 'App\Policies\ProductSizePolicy',
     ];
 
     /**
@@ -28,12 +29,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
         Passport::routes();
         
-        if(! $this->app->runningInConsole()){
-            foreach (Permission::all() as $permission) {
-                Gate::define($permission->name, function($user) use ($permission){
-                    return $user->hasPermission($permission);
-                });
-            }
-        }
+        // if(! $this->app->runningInConsole()){
+        //     foreach (Permission::all() as $permission) {
+        //         Gate::define($permission->name, function($user) use ($permission){
+        //             return $user->hasPermission($permission);
+        //         });
+        //     }
+        // }
     }
 }

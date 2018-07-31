@@ -10,6 +10,8 @@ use Datatables;
 class ProductSizeController extends Controller
 {
     public function getList(){
+        $this->authorize('view',ProductSize::class);
+
         $datas = ProductSize::select('id', 'name', 'dimension', 'created_at')->orderBy('id','DESC')->get()->toArray();
         return Datatables::of($datas)
             ->addColumn('action', function ($data) {
