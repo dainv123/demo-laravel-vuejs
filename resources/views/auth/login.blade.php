@@ -26,10 +26,12 @@
     else
     {
         var g_token = '{{  Session::get('g_token') }}';
-        if(g_token == 'logout')
+        if(g_token == 'logout'){
+            localStorage.clear();
             delete_cookie('g_token');
+        }
     }
-    
+
 </script>
 <div class="container">
     <div class="row justify-content-center">

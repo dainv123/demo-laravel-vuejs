@@ -33,6 +33,7 @@ export default {
       var g_user = JSON.parse(localStorage.getItem('g_user')), 
           obj_g_user = JSON.parse(g_user);
           this.g_user = obj_g_user;
+      // console.log(obj_g_user, this.g_user.firstname);
     },
     getContact() {
       Axios.get(api_contact).then(response => {

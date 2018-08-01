@@ -33109,6 +33109,7 @@ var api_contact = "/api/local/contact";
       var g_user = JSON.parse(localStorage.getItem('g_user')),
           obj_g_user = JSON.parse(g_user);
       this.g_user = obj_g_user;
+      // console.log(obj_g_user, this.g_user.firstname);
     },
     getContact: function getContact() {
       var _this = this;
