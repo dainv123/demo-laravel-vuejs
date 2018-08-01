@@ -3,9 +3,10 @@ import Router from "vue-router";
 
 // Containers
 import Full from "../containers/Full";
-import Wrapper from "../containers/Wrapper";
+// import Wrapper from "../containers/Wrapper";
 
 // Views
+import p404 from "../views/404/p404";
 import Dashboard from "../views/Dashboard/Dashboard";
 import RoleList from "../views/Role/list";
 import RoleEdit from "../views/Role/edit";
@@ -35,6 +36,517 @@ import ProfileRead from "../views/Profile/profile";
 import ProfileEdit from "../views/Profile/setting";
 import ProfileNotification from "../views/Profile/notification";
 
+/**
+ *  options router
+ */
+
+const router_auth = [
+  {
+    path: "",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "dashboard",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "role",
+    redirect: "/role/list",
+    name: "Role",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Role",
+        component: RoleList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Role",
+        component: RoleEdit
+      },
+      {
+        path: "create",
+        name: "Create Role",
+        component: RoleCreate
+      }
+    ]
+  },
+  {
+    path: "permission",
+    redirect: "/permission/list",
+    name: "Permission",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Permission",
+        component: PermissionList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Permission",
+        component: PermissionEdit
+      },
+      {
+        path: "create",
+        name: "Create Permission",
+        component: PermissionCreate
+      }
+    ]
+  },
+  {
+    path: "user",
+    redirect: "/user/list",
+    name: "User",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List User",
+        component: UserList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit User",
+        component: UserEdit
+      },
+      {
+        path: "create",
+        name: "Create User",
+        component: UserCreate
+      }
+    ]
+  },
+  {
+    path: "profile",
+    redirect: "/profile/",
+    name: "Profile",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "/",
+        name: "Read Profile",
+        component: ProfileRead
+      },
+      {
+        path: "edit",
+        name: "Edit Profile",
+        component: ProfileEdit
+      },
+      {
+        path: "notification",
+        name: "Notification Profile",
+        component: ProfileNotification
+      }
+    ]
+  },
+  { path: '*', name: "404", component: p404 },
+]
+
+const router_manager = [
+  {
+    path: "",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "dashboard",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "productsize",
+    redirect: "/productsize/list",
+    name: "Product Size",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Size",
+        component: ProductSizeList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Size",
+        component: ProductSizeEdit
+      },
+      {
+        path: "create",
+        name: "Create Size",
+        component: ProductSizeCreate
+      }
+    ]
+  },
+  {
+    path: "category",
+    redirect: "/category/list",
+    name: "Category",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Category",
+        component: CategoryList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Category",
+        component: CategoryEdit
+      },
+      {
+        path: "create",
+        name: "Create Category",
+        component: CategoryCreate
+      }
+    ]
+  },
+  {
+    path: "product",
+    redirect: "/product/list",
+    name: "Product",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Product",
+        component: ProductList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Product",
+        component: ProductEdit
+      },
+      {
+        path: "create",
+        name: "Create Product",
+        component: ProductCreate
+      }
+    ]
+  },
+  {
+    path: "blog",
+    redirect: "/blog/list",
+    name: "Blog",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Blog",
+        component: BlogList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Blog",
+        component: BlogEdit
+      },
+      {
+        path: "create",
+        name: "Create Blog",
+        component: BlogCreate
+      }
+    ]
+  },
+  {
+    path: "slider",
+    redirect: "/slider/list",
+    name: "Slider",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Slider",
+        component: SliderList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Slider",
+        component: SliderEdit
+      },
+      {
+        path: "create",
+        name: "Create Slider",
+        component: SliderCreate
+      }
+    ]
+  },
+  {
+    path: "profile",
+    redirect: "/profile/",
+    name: "Profile",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "/",
+        name: "Read Profile",
+        component: ProfileRead
+      },
+      {
+        path: "edit",
+        name: "Edit Profile",
+        component: ProfileEdit
+      },
+      {
+        path: "notification",
+        name: "Notification Profile",
+        component: ProfileNotification
+      }
+    ]
+  },
+  { path: '*', name: "404", component: p404 }
+]
+
+const router_full = [
+  {
+    path: "",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "dashboard",
+    name: "Dashboard",
+    component: Dashboard
+  },
+  {
+    path: "role",
+    redirect: "/role/list",
+    name: "Role",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Role",
+        component: RoleList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Role",
+        component: RoleEdit
+      },
+      {
+        path: "create",
+        name: "Create Role",
+        component: RoleCreate
+      }
+    ]
+  },
+  {
+    path: "permission",
+    redirect: "/permission/list",
+    name: "Permission",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Permission",
+        component: PermissionList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Permission",
+        component: PermissionEdit
+      },
+      {
+        path: "create",
+        name: "Create Permission",
+        component: PermissionCreate
+      }
+    ]
+  },
+  {
+    path: "productsize",
+    redirect: "/productsize/list",
+    name: "Product Size",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Size",
+        component: ProductSizeList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Size",
+        component: ProductSizeEdit
+      },
+      {
+        path: "create",
+        name: "Create Size",
+        component: ProductSizeCreate
+      }
+    ]
+  },
+  {
+    path: "category",
+    redirect: "/category/list",
+    name: "Category",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Category",
+        component: CategoryList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Category",
+        component: CategoryEdit
+      },
+      {
+        path: "create",
+        name: "Create Category",
+        component: CategoryCreate
+      }
+    ]
+  },
+  {
+    path: "user",
+    redirect: "/user/list",
+    name: "User",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List User",
+        component: UserList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit User",
+        component: UserEdit
+      },
+      {
+        path: "create",
+        name: "Create User",
+        component: UserCreate
+      }
+    ]
+  },
+  {
+    path: "product",
+    redirect: "/product/list",
+    name: "Product",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Product",
+        component: ProductList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Product",
+        component: ProductEdit
+      },
+      {
+        path: "create",
+        name: "Create Product",
+        component: ProductCreate
+      }
+    ]
+  },
+  {
+    path: "blog",
+    redirect: "/blog/list",
+    name: "Blog",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Blog",
+        component: BlogList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Blog",
+        component: BlogEdit
+      },
+      {
+        path: "create",
+        name: "Create Blog",
+        component: BlogCreate
+      }
+    ]
+  },
+  {
+    path: "slider",
+    redirect: "/slider/list",
+    name: "Slider",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "list",
+        name: "List Slider",
+        component: SliderList
+      },
+      {
+        path: "edit/:id",
+        name: "Edit Slider",
+        component: SliderEdit
+      },
+      {
+        path: "create",
+        name: "Create Slider",
+        component: SliderCreate
+      }
+    ]
+  },
+  {
+    path: "profile",
+    redirect: "/profile/",
+    name: "Profile",
+    component: { render(c) { return c('router-view') } },
+    children: [
+      {
+        path: "/",
+        name: "Read Profile",
+        component: ProfileRead
+      },
+      {
+        path: "edit",
+        name: "Edit Profile",
+        component: ProfileEdit
+      },
+      {
+        path: "notification",
+        name: "Notification Profile",
+        component: ProfileNotification
+      }
+    ]
+  },
+  { path: '*', name: "404", component: p404 }
+]
+
+/**
+ *  Set router
+ */
+var g_permission = JSON.parse(localStorage.getItem('g_permission')), 
+    obj_g_permission = JSON.parse(g_permission),
+    router = [];
+function init_permission() {
+  switch (true) {
+    case obj_g_permission.find(item => item.name === 'view-auth') != undefined && obj_g_permission.find(item => item.name === 'view-manager') != undefined:
+      router = router_full;
+      console.log('sp-admin');
+      break;
+    case obj_g_permission.find(item => item.name === 'view-auth') != undefined:
+      router = router_auth;
+      console.log('auth');
+      break;
+    case obj_g_permission.find(item => item.name === 'view-manager') != undefined:
+      router = router_manager;
+      console.log('manager');
+      break;
+    default:
+      console.log('Not permission');
+      break;
+  }
+}
+
+init_permission();
+
 Vue.use(Router);
 
 export default new Router({
@@ -47,220 +559,7 @@ export default new Router({
       redirect: "/dashboard",
       name: "Home",
       component: Full,
-      children: [
-        {
-          path: "dashboard",
-          name: "Dashboard",
-          component: Dashboard
-        },
-        {
-          path: "role",
-          redirect: "/role/list",
-          name: "Role",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Role",
-              component: RoleList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Role",
-              component: RoleEdit
-            },
-            {
-              path: "create",
-              name: "Create Role",
-              component: RoleCreate
-            }
-          ]
-        },
-        {
-          path: "permission",
-          redirect: "/permission/list",
-          name: "Permission",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Permission",
-              component: PermissionList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Permission",
-              component: PermissionEdit
-            },
-            {
-              path: "create",
-              name: "Create Permission",
-              component: PermissionCreate
-            }
-          ]
-        },
-        {
-          path: "productsize",
-          redirect: "/productsize/list",
-          name: "Product Size",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Size",
-              component: ProductSizeList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Size",
-              component: ProductSizeEdit
-            },
-            {
-              path: "create",
-              name: "Create Size",
-              component: ProductSizeCreate
-            }
-          ]
-        },
-        {
-          path: "category",
-          redirect: "/category/list",
-          name: "Category",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Category",
-              component: CategoryList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Category",
-              component: CategoryEdit
-            },
-            {
-              path: "create",
-              name: "Create Category",
-              component: CategoryCreate
-            }
-          ]
-        },
-        {
-          path: "user",
-          redirect: "/user/list",
-          name: "User",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List User",
-              component: UserList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit User",
-              component: UserEdit
-            },
-            {
-              path: "create",
-              name: "Create User",
-              component: UserCreate
-            }
-          ]
-        },
-        {
-          path: "product",
-          redirect: "/product/list",
-          name: "Product",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Product",
-              component: ProductList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Product",
-              component: ProductEdit
-            },
-            {
-              path: "create",
-              name: "Create Product",
-              component: ProductCreate
-            }
-          ]
-        },
-        {
-          path: "blog",
-          redirect: "/blog/list",
-          name: "Blog",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Blog",
-              component: BlogList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Blog",
-              component: BlogEdit
-            },
-            {
-              path: "create",
-              name: "Create Blog",
-              component: BlogCreate
-            }
-          ]
-        },
-        {
-          path: "slider",
-          redirect: "/slider/list",
-          name: "Slider",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "list",
-              name: "List Slider",
-              component: SliderList
-            },
-            {
-              path: "edit/:id",
-              name: "Edit Slider",
-              component: SliderEdit
-            },
-            {
-              path: "create",
-              name: "Create Slider",
-              component: SliderCreate
-            }
-          ]
-        },
-        {
-          path: "profile",
-          redirect: "/profile/",
-          name: "Profile",
-          component: { render(c) { return c('router-view') } },
-          children: [
-            {
-              path: "/",
-              name: "Read Profile",
-              component: ProfileRead
-            },
-            {
-              path: "edit",
-              name: "Edit Profile",
-              component: ProfileEdit
-            },
-            {
-              path: "notification",
-              name: "Notification Profile",
-              component: ProfileNotification
-            }
-          ]
-        }
-      ]
+      children: router
     }
   ]
 });

@@ -61,9 +61,9 @@ class LoginController extends Controller
         $token->save();
 
         $g_token = $tokenResult->accessToken;
-        $g_permission = $user->role->permissions;
-        
-        return redirect('admin')->with(['g_token'=> $g_token, 'g_permission'=>$g_permission]);
+        $g_permission = json_encode($user->role->permissions);
+
+        return redirect('admin')->with(['g_token'=> $g_token, 'g_permission'=>$g_permission, 'g_user'=>$user]);
     }
 
     public function logout(Request $request) {

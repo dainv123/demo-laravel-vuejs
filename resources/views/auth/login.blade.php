@@ -17,22 +17,19 @@
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     };
 
+    /**
+     *  destroy locals permission
+     */
     if (document.cookie.indexOf('g_token') == -1 ) {
         console.log('k ton tai cookie');
     }
     else
     {
-        var g_token = "{{  Session::get('g_token') }}";
-        if(g_token == 'logout'){
+        var g_token = '{{  Session::get('g_token') }}';
+        if(g_token == 'logout')
             delete_cookie('g_token');
-            console.log('da xoa cookie');
-        }
-        else
-        console.log('K lam gi');
     }
-        
-
-
+    
 </script>
 <div class="container">
     <div class="row justify-content-center">
