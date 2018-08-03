@@ -12,13 +12,15 @@
 */
 Route::auth();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/admin',  ['as' => 'admin', function () {
     return view('admin.index');
 }]);
 
 Auth::routes();
-
+Route::get('mail/send', function () {
+    return view('welcome');
+});
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('mail/send', 'MailController@send');
