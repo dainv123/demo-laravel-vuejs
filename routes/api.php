@@ -106,4 +106,13 @@ Route::middleware(['auth:api'])->group(function () {
         Route::post('delete', ['as' => 'delete', 'uses' => 'SliderController@postDelete']);
     });
     
+    
+    Route::group(['as' => 'order.', 'prefix' => 'order'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'OrderController@getList']);
+        Route::get('create', ['as' => 'create', 'uses' => 'OrderController@getCreate']);
+        Route::post('create', ['as' => 'create', 'uses' => 'OrderController@postCreate']);
+        Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'OrderController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'edit', 'uses' => 'OrderController@postEdit']);
+        Route::post('delete', ['as' => 'delete', 'uses' => 'OrderController@postDelete']);
+    });
 });

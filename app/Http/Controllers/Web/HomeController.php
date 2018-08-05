@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,13 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         // return view('home');
         $products = Product::select()->orderBy('id','DESC')->get()->toArray();
         return view('user.page.index', compact('products'));
     }
-    
+
     public function index1()
     {
         return view('home');
