@@ -4,34 +4,46 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use Datatables, Cart;
+use App\Models\DetailOrder;
+use Datatables;
 
-class OrderController extends Controller
+class DetailOrderController extends Controller
 {
     public function getList(){
-        $datas = Order::select('id', 'title', 'created_at')->orderBy('id','DESC')->get()->toArray();
+        $datas = DetailOrder::select('id', 'title', 'created_at')->orderBy('id','DESC')->get()->toArray();
         return Datatables::of($datas)
             ->addColumn('action', function ($data) {
                 return $data['id'];
             })
             ->rawColumns(['action'])
             ->make(true);
-            $demo = new Order();
+            $demo = new DetailOrder();
         return $datas;
     }
 
     public function postCreate(Request $request){
-        return;
+        $datas = new DetailOrder();
+        $data = [
+            'title' => $request->get('title'),
+        ];
+        $dataCreated = DetailOrder::create($data);
+        if ($dataCreated->id)
+            return response()->json([
+                'status' => true,
+            ]);
+
+        return response()->json([
+            'status' => false
+        ]);
     }
 
     public function getEdit($id){
-        $datas = Order::find($id);
+        $datas = DetailOrder::find($id);
         return $datas;
     }
 
     public function postEdit(Request $request){
-        $data = Order::where([
+        $data = DetailOrder::where([
             'id' => $request->get('id'),
         ])->first();
 
@@ -51,7 +63,7 @@ class OrderController extends Controller
     }
 
     public function postDelete(Request $request){
-        $data = Order::where([
+        $data = DetailOrder::where([
             'id' => $request->get('id'),
         ])->first();
 

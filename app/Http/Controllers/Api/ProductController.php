@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Datatables,File, Storage;
@@ -23,6 +24,8 @@ class ProductController extends Controller
     
     public function postCreate(Request $request){
         $datas = new Product();
+
+        $user_id = Auth::user()['id'];
         $image = $request->get('image');
         $name = 'img_'.time().'.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
         \Image::make($request->get('image'))->save(public_path('images/').$name);
@@ -45,7 +48,7 @@ class ProductController extends Controller
             'avaibility' => $request->get('avaibility'),
             'categorie_id' => $request->get('categorie_id'),
             'size_id'=> $request->get('size_id'),
-            'user_id' => $request->get('user_id'),
+            'user_id' => $user_id,
         ];
         $dataCreated = Product::create($data);
         if ($dataCreated->id)
@@ -64,6 +67,8 @@ class ProductController extends Controller
     }
 
     public function postEdit(Request $request){
+        $user_id = Auth::user()['id'];
+
         $data = Product::where([
             'id' => $request->get('id'),
         ])->first();
@@ -99,7 +104,7 @@ class ProductController extends Controller
                 'avaibility' => $request->get('avaibility'),
                 'categorie_id' => $request->get('categorie_id'),
                 'size_id'=> $request->get('size_id'),
-                'user_id' => $request->get('user_id'),
+                'user_id' => $user_id,
             ];
             $data->update($dataEdit);
             return response()->json([
