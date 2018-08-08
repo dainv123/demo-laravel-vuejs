@@ -29,9 +29,6 @@ class ProductController extends Controller
 
             $product = Product::find($id);
             Cart::add(['id'=> $id, 'name' => $product->name, 'qty' => $qty, 'price' => $product->price, 'options' => ['image' => $product->image]]);
-            
-            $cart_list = Cart::content();
-            $cart_total = Cart::total();
 
             return response()->json([
                 'status' => true
@@ -42,7 +39,10 @@ class ProductController extends Controller
     public function listCart(){
         $cart_list = Cart::content();
         $cart_total = Cart::total();
-        return view('user.page.cart', compact('cart_list', 'cart_total'));
+        $cart_subtotal = Cart::subtotal();
+        $cart_delivery = Cart::delivery();
+        // dd(Cart::subtotal());
+        return view('user.page.cart', compact('cart_list', 'cart_total','cart_subtotal'));
     }
 
     public function updateCart(){
@@ -51,9 +51,6 @@ class ProductController extends Controller
             foreach ($results as $result) {
                 Cart::update($result['rowid'], ['qty' => $result['qty']]);
             }
-
-            $cart_list = Cart::content();
-            $cart_total = Cart::total();
 
             return response()->json([
                 'status' => true
@@ -64,9 +61,6 @@ class ProductController extends Controller
 
     public function deleteCart($id){
         Cart::remove($id);
-        
-        $cart_list = Cart::content();
-        $cart_total = Cart::total();
 
         return response()->json([
             'status' => true

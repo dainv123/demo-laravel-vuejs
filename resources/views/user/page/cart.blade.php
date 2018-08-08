@@ -41,11 +41,11 @@
                                     <div class="qty-btn d-flex">
                                         <p>Qty</p>
                                         <div class="quantity">
-                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                            <span class="qty-minus" onclick="var effect = this.parentNode.querySelector('#qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
                                             <input type="hidden" class="cart_rowid_input" value="{!! $cart_item->rowId!!}">
                                             <input type="hidden" class="cart_id_input" value="{!! $cart_item->id!!}">
                                             <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="{!! $cart_item->qty !!}">
-                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                            <span class="qty-plus" onclick="var effect = this.parentNode.querySelector('#qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </div>
                                 </td>
@@ -59,9 +59,9 @@
                 <div class="cart-summary">
                     <h5>Cart Total</h5>
                     <ul class="summary-table">
-                        <li><span>subtotal:</span> <span>${!! number_format($cart_item->qty*$cart_item->price,0,",",".") !!}</span></li>
+                        <li><span>subtotal:</span> <span>${!! $cart_subtotal !!}</span></li>
                         <li><span>delivery:</span> <span>Free</span></li>
-                        <li><span>total:</span> <span>${!! number_format($cart_item->qty*$cart_item->price,0,",",".") !!}</span></li>
+                        <li><span>total:</span> <span>${!! $cart_total !!}</span></li>
                     </ul>
                     <div class="cart-btn mt-100">
                         <a href="{!! URL('checkout') !!}" class="btn amado-btn w-100">Checkout Paypal </a>
