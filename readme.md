@@ -1,2 +1,2 @@
-BE: Laravel 
-FE: Vue.js
++ BE: Laravel 
++ FE: Vue.js
